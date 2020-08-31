@@ -1,0 +1,25 @@
+Diberikan N buah titik pada koordinat 2 dimensi dan sebuah segment garis horizontal dari (L, 0) hingga (R, 0).
+N titik tersebut memiliki koordinat Y_i ≠ 0.
+Hitung banyaknya subset dari N titik tersebut yang memenuhi berikut:
+- Misal A adalah titik-titik pada subset yang memiliki Y_i > 0.
+- Misal B adalah titik-titik pada subset yang memiliki Y_i < 0.
+- Maka untuk setiap pasang titik P dan Q (P elemen dari A dan Q elemen dari B), jika ditarik segment garis PQ maka harus memotong/menyentuh segment garis (L, 0) ke (R, 0).
+Himpunan kosong juga dianggap memenuhi.
+
+constraints:
+1 ≤ N ≤ 2000
+-10^9 ≤ L, R ≤ 10^9
+-10^9 ≤ X_i, Y_i ≤ 10^9 dan Y_i ≠ 0 untuk semua 1 ≤ i ≤ N
+X_i ≠ X_j atau Y_i ≠ Y_j untuk semua 1 ≤ i < j ≤ N
+
+format input:
+N L R
+X_1 Y_1
+X_2 Y_2
+.
+.
+.
+X_N Y_N
+
+format output:
+ANS

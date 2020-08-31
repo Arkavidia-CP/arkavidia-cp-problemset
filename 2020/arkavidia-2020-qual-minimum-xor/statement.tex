@@ -1,0 +1,93 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Competitive Programming - Arkavidia VI}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Minimum XOR} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 64MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+XOR atau $\oplus$ merupakan salah satu operator logika dalam aljabar boolean yang menerima dua buah operan berupa nilai boolean ($true, false$ atau $0, 1$) dan menghasilkan nilai $true$ atau $1$ jika (dan hanya jika) salah satu operan bernilai $true$ atau $1$ tetapi tidak keduanya. Tabel kebenaran berikut menunjukkan nilai $A \oplus B$ untuk nilai $A$ dan $B$ yang berbeda-beda: 
+
+\begin{center}
+\begin{tabular}{c|c|c}
+$A$ & $B$ & $A \oplus  B$ \\ \hline
+0 & 0 & 0       \\
+1 & 0 & 1       \\
+0 & 1 & 1       \\
+1 & 1 & 0
+\end{tabular}
+\end{center}
+Operasi XOR juga dapat dilakukan dengan operan berupa bilangan bulat non-negatif, dengan cara melakukan operasi XOR pada tiap digit kedua operan dalam bentuk biner dengan posisi yang bersesuaian. Contohnya:
+$$ 181 \oplus 108 = 10110101_2 \oplus 01101100_2 = 11011001_2 = 217 $$
+
+Diberikan sebuah bilangan bulat non-negatif $N$ dan sebuah bilangan asli $k$. Untuk sembarang tupel $k$ bilangan bulat non-negatif $(a_1, a_2, \ldots, a_k)$ yang berjumlah $N$, carilah nilai minimum dari $a_1 \oplus a_2 \oplus \ldots \oplus a_k$ (perhatikan bahwa operasi XOR bersifat asosiatif sehingga urutan pengoperasian pada persamaan tersebut tidak berpengaruh pada hasil akhir).
+
+\subsection*{Format Masukan}
+
+Masukan terdiri dari dua bilangan  $N, k$ ($0 \leq N \leq 10^{18}, 1 \leq k \leq 10^{18}$)
+
+\subsection*{Format Keluaran}
+
+Keluaran berupa nilai minimum yang mungkin dihasilkan oleh $a_1 \oplus a_2 \oplus \ldots \oplus a_k$ dimana $a_i$ merupakan bilangan bulat non-negatif yang berjumlah $N$.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+5 3
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+1
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Bilangan $2, 2, 1$ berjumlah $5$ dengan nilai $2 \oplus 2 \oplus 1 = 1$. Dapat dibuktikan tidak dapat dihasilkan nilai XOR yang lebih kecil dari $1$.
+\pagebreak
+
+\end{document}

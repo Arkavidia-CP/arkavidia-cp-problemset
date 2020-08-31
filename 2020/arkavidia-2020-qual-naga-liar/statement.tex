@@ -1,0 +1,95 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Competitive Programming - Arkavidia VI}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Naga Liar} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 64MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Gawat! Dalam ekspedisinya menyelamatkan tuan putri, pasukan Elza bertemu seorang naga liar di padang rumput. Sekarang, Elza harus menentukan satu orang tumbal dari pasukannya untuk dikorbankan ke naga tersebut agar sisa pasukannya dapat kabur. Pasukan Elza berjumlah $N$ orang, dan Elza ingin memilih suatu bilangan acak antara $0$ sampai $N-1$ dengan peluang yang sama untuk menentukan siapa orang yang akan dikorbankan. Tentunya hal tersebut sangatlah sulit dilakukan di tengah padang rumput, apalagi Elza hanya membawa sebuah koin. Untungnya, Elza mengerti representasi biner sehingga dia menciptakan cara unik berikut.
+
+Pertama, Elza memikirkan representasi biner dari semua bilangan antara $0$ sampai $N-1$, menambahkan digit nol di depan setiap bilangan sebanyak seperlunya agar semua representasinya memiliki panjang yang sama. Lalu, Elza menentukan sisi mana dari koin yang akan merepresentasikan digit nol dan satu. Elza pun mulai melempar koin tersebut, mengumpulkan digit hasil pelemparannya sampai membentuk salah satu bilangan diantara $0$ sampai $N-1$. Sayangnya ada kemungkinan digit yang dia kumpulkan tidak mungkin membentuk salah satu bilangan dari $0$ sampai $N-1$, jika itu terjadi, Elza terpaksa langsung membuang semua digit yang dia kumpulkan dan memulai lagi dari awal.
+
+Elza tidak punya banyak waktu, naga tersebut sudah lapar, apalagi dia sudah membuang banyak waktu menjelaskan buah pikirnya kepada Anda. Sekarang, dia butuh bantuan Anda menentukan ekspektasi banyaknya pelemparan yang Elza lakukan untuk mendapatkan bilangan acak tersebut, untuk memastikan caranya tidak akan memakan terlalu banyak waktu. Karena jawabannya dapat berbentuk pecahan, untuk jawaban bernilai $\frac{p}{q}$, dengan $p$ dan $q$ relatif prima, cukup keluarkan nilai $pq^{-1} \mod (10^9+7)$ dimana $q^{-1}$ berarti invers perkalian $q$ terhadap bilangan $10^9+7$.
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari satu bilangan bulat positif $N$ ($2 \leq N \leq 10^{18}$).
+
+\subsection*{Format Keluaran}
+Sebuah bilangan $pq^{-1}$ yang menyatakan besar ekspektasi banyak pelemparan koin. Dipastikan untuk nilai ekspektasi $\frac{p}{q}$, nilai $q$ tidak pernah habis dibagi $10^9+7$.
+
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+4
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+5
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+800000010
+\end{lstlisting}
+\end{multicols}
+
+\subsection*{Penjelasan}
+Untuk \textit{testcase} pertama, bilangan dari $0$ sampai $3$ mempunyai representasi biner $00, 01, 10, 11$. Dua lemparan koin akan selalu menghasilkan bilangan yang valid dalam \textit{range}, sehingga ekspektasinya adalah dua.
+
+Untuk \textit{testcase} kedua dengan representasi biner $000, 001, 010, 011, 100$ memiliki nilai ekspektasi $\frac{22}{5}$. Contoh kejadian yang dapat terjadi adalah Elza melempar koin $1$ lalu $1$. Karena tidak ada bilangan dengan \textit{prefix} $11$, Elza melakukan pelemparan ulang, lalu mendapat bilangan $010$ misalnya. 
+\pagebreak
+
+\end{document}
+

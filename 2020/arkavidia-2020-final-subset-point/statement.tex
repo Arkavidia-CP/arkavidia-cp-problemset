@@ -1,0 +1,93 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Competitive Programming - Arkavidia VI}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Menara} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 64MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Arkavland merupakan negara yang sangat maju dalam sisi teknologi industri. Sistem telekomunikasi negara tersebut mengandalkan $N$ buah menara komunikasi, tersebar di seluruh penjuru Arkavland dengan koordinatnya masing-masing, $(x_i, y_i)$. Pada setiap pasang menara komunikasi, terhubung suatu kabel lurus yang digunakan untuk mentransmisikan sinyal komunikasi.
+
+Setelah Arkavland kalah dalam Perang Dunia ketiga, sekutu membagi Arkavland menjadi dua bagian, yaitu Arkavland Selatan dan Arkavland Utara. Kedua bagian ini dipisahkan dengan suatu dinding panjang yang melintang pada koordinat $y = 0$, dimana perlintasan antar bagian harus dilakukan pada suatu daerah perbatasan yang dijaga ketat, pada suatu segmen diantara koordinat $(L, 0)$ dan $(R, 0)$. 
+
+Hal ini menyulitkan kementrian telekomunikasi Arkavland, karena sekutu melarang adanya konstruksi apapun di atas dinding pembatas bagian Arkavland tersebut, termasuk diantaranya kabel komunikasi. Maka, mentri telekomunikasi Arkavland harus melakukan keputusan yang berat untuk menghancurkan beberapa menara komunikasi yang ada, sehingga setiap pasang menara komunikasi yang tersisa masih dapat dihubungkan dengan suatu kabel lurus yang tidak memotong garis $y = 0$, kecuali jika memotong/menyentuh segmen diantara $(L, 0)$ dan $(R, 0)$. Anda diminta menentukan berapa banyak pilihan valid menara-menara komunikasi yang dihancurkan oleh kementrian.
+
+Perhatikan bahwa menghancurkan seluruh menara yang ada di Arkavland Selatan, Arkavland Utara, maupun semua menara yang ada merupakan pilihan yang valid. Karena jawabannya bisa cukup besar, cukup keluarkan banyak pilihan yang valid dimodulo $10^9 + 7$.
+
+\subsection*{Format Masukan}
+Baris pertama berisi bilangan bulat $N\:L\:R$, ($1 \leq N \leq 2000, -10^9 \leq L \leq R \leq 10^9$), banyak menara komunikasi yang ada di Arkavland pada awalnya, dan batasan koordinat $y$ dari daerah perbatasan yang ada.
+
+$N$ baris berikutnya mengandung dua bilangan bulat $x_i y_i$, ($-10^9 \leq x_i, y_i \leq 10^9, y_i \ne 0$) yang menyatakan koordinat dari menara ke-$i$. Dipastikan bahwa nilai tupel $(x_i, y_i)$ bersifat unik untuk setiap menara.
+
+\subsection*{Format Keluaran}
+Keluarkan satu baris berisi sebuah bilangan bulat yang menyatakan banyak pilihan yang valid dimodulo $10^9 + 7$.
+\\
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+3 2 4
+1 1
+4 -2
+5 2
+
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+6
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Perhatikan bahwa hanya kabel antara menara ke-$2$ dan menara ke-$3$ yang melintasi dinding pembatas, sehingga kementrian harus menghancurkan minimal salah satu dari kedua menara tersebut. Sehingga terdapat $6$ pilihan yang valid, yaitu untuk menghancurkan menara : $\{\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{1,2,3\}$.
+\pagebreak
+
+
+\end{document}
+

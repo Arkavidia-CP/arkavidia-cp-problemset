@@ -1,0 +1,110 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Competitive Programming - Arkavidia VI}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{2020} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 64MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Ini tahun $2020$. Negara Arkavland telah menjadi negara adikuasa, sejajar dengan negara-negara maju lainnya seperti Jepang dan India. Untuk merayakan pencapaian hebat ini, Pemerintah Arkavland ingin mengirimkan sebuah wahana penyelidik antariksa ke luar galaksi bimasakti bernama ArkavProber. ArkavProber ini dilengkapi dengan berbagai teknologi canggih, seperti  autopilot, biometric id recognition, GPS, koneksi 4G, kamera $48$ megapixel, bahkan MMS. Wahana ini juga terus mengirimkan aliran sinyal ke bumi berbentuk sinyal digital dengan kecepatan 1 bit per mikrodetik untuk kepentingan lokalisasi wahana.
+
+Sayangnya, dalam upaya mengalahkan kematian, Negara Arkavland telah mengganti semua penduduknya menjadi organisme baru berbasis silikon yang membutuhkan energi listrik untuk bertahan hidup. Negara Arkavland berkomunikasi dalam bahasa Arkav dengan kata-kata yang terdiri dari karakter biner $0$ dan $1$. Mengingat Negara Arkav merupakan negara yang sangat agamis, Pemerintah Arkavland tidak ingin ArkavProber mengirimkan kata-kata kasar maupun radikal di aliran sinyalnya.
+
+Diberikan daftar kata-kata buruk yang ditetapkan pemerintah, Anda diminta menggenerate sebuah \textit{infinite string} dengan karakter $0$ dan $1$ untuk dikirimkan oleh ArkavProber ke bumi. \textit{String} ini tidak boleh mengandung kata-kata terlarang yang diberikan sebagai \textit{substring}nya. Perhatikan bahwa karena memberi keluaran dengan tak hingga banyaknya karakter mungkin memakan waktu yang lama, Anda cukup mengeluarkan $100.000$ karakter pertamanya saja.
+
+\subsection*{Format Masukan}
+
+Baris pertama berisi sebuah bilangan asli $N$ ($1 \leq N \leq 10^5$) yang menyatakan banyaknya kata yang dilarang oleh pemerintah.
+
+$N$ Baris berikutnya berisi string $S_i$ ($1 \leq |S_i| \leq 50$, $S_i[j] \in \{0, 1\}$). $S_i$ menyatakan kata terlarang ke-$i$.
+
+\subsection*{Format Keluaran}
+
+Keluarkan satu baris yang mengandung $10^5$ karakter pertama dari \substring{infinite-string} yang patut dikeluarkan oleh ArkavProber. Jika ada banyak solusi, keluarkan yang mana saja. Jika tidak ada yang dapat memenuhi, keluarkan satu baris bertuliskan "Tidak memiliki solusi".
+\\
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+2
+0
+11111
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+Tidak memiliki solusi
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+3
+000
+11
+0010
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+0101010101010101010101010101010101...
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+
+Untuk contoh pertama, apabila ArkavProber tidak boleh mengirimkan digit $0$, maka satu-satunya kemungkinan adalah mengirimkan \textit{string} yang hanya mengandung digit $1$, yaitu $111111111111...$. Tetapi \textit{string} tersebut tentunya mengandung $11111$, jadi tidak ada solusi yang bisa diberikan.
+
+Untuk contoh kedua, solusinya adalah $01$ (atau $10$) diulang terus-menerus. Cukup keluarkan $100.000$ digit $0$ dan $1$ secara bergantian.
+
+\pagebreak
+
+\end{document}

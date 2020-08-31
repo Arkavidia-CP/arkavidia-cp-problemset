@@ -1,0 +1,98 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Competitive Programming - Arkavidia VI}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{XOR Beruntun} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 64MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Suatu saat pada sore hari, Elza bersama $N$ orang temannya melaksanakan arisan bulanan.
+Karena bosan dengan pengundian menggunakan kertas, Elza bersama temannya membuat sebuah \textit{pseudo random generator}.
+\textit{pseudo random generator} bekerja dengan cara memasukkan banyaknya peserta arisan, yaitu $N$, lalu peserta arisan bergantian memasukkan sebuah bilangan bulat positif $X$.
+Selanjutnya, \textit{pseudo random generator} akan melakukan operasi XOR bersebelahan.
+
+Operasi XOR bersebelahan yang dimaksud adalah sebagai berikut:
+
+Bilangan yang dimasukkan peserta arisan pertama akan dilakukan proses XOR dengan bilangan peserta arisan kedua, 
+Bilangan yang dimasukkan peserta arisan kedua akan dilakukan proses XOR dengan peserta arisan ketiga, 
+dan begitu seterusnya hingga bilangan peserta arisan ke-$N - 1$ dilakukan proses XOR dengan bilangan peserta ke-$N$. Proses ini akan menghasilkan sebuah barisan bilangan baru berisi $N - 1$ bilangan yang merupakan hasil operasi XOR bersebelahan. 
+Pemrosesan tersebut dilakukan terus menerus hingga didapatkan barisan bilangan yang terdiri satu bilangan saja.
+
+Anda yang sangat jago membuat program diminta Elza untuk membuatkan program pseudo random generator dan menampilkan bilangan terakhir yang dihasilkan.
+
+\subsection*{Format Masukan}
+
+Baris pertama berisi sebuah bilangan bulat $N$ ($1 \leq N \leq 200.000$) yang merupakan banyaknya teman Elza.
+Baris kedua berisi $N$ buah bilangan bulat $X_i$ ($1 \leq X_i \leq 10^{9}$) dipisahkan dengan spasi. $X_i$ menyatakan bilangan yang dimasukkan teman Elza ke-$i$.
+
+\subsection*{Format Keluaran}
+
+Sebuah bilangan bulat $Y$ hasil dari  \textit{pseudo random generator}.
+\\
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+3
+1 3 5
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+4
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Bilangan yang dimasukkan peserta arisan adalah $1, 3, 5$. 
+Setelah satu kali operasi XOR bersebelahan, maka barisan yang dihasilkan adalah $[(1$ XOR $3), (3$ XOR $5)]$ atau  $[2, 6]$. Setelah melakukan operasi XOR bersebelahan sekali lagi, maka barisan bilangan yang dihasilkan adalah $[2$ XOR $6]$ atau [4]. Sehingga bilangan yang dihasilkan \textit{pseudo random generator} adalah 4.
+
+
+\pagebreak
+
+\end{document}

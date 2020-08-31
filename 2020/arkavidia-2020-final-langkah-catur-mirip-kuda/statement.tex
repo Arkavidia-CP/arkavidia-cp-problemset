@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Competitive Programming - Arkavidia VI}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Loncat Kuda} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 128MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Arvy sedang memainkan permainan yang baru saja dia buat, dinamakan loncat kuda. 
+Aturannya sederhana, sebuah kuda catur harus digerakkan menuju sebuah titik akhir pada papan catur $N \times M$.
+Pada permainan ini, kuda dapat meloncat sejauh $A$ langkah vertikal dan $B$ langkah horizontal atau $A$ langkah horizontal dan $B$ langkah vertikal.
+Selain itu, terdapat sejumlah jebakan pada papan catur yang tidak boleh dilewati kuda sehingga kuda tersebut harus menjamin bahwa jalur yang akan dilewatinya tidak mengandung jebakan sedikitpun.
+
+Berikut adalah contoh papan permainan.
+
+\begin{center}
+    \includegraphics[width=100px]{final/Initial-Configuration.png}    
+\end{center}
+
+
+Misi Anda adalah membantu Arvy agar dapat menyelesaikan permainan dalam langkah terkecil.
+Misalnya, untuk $(A,B)=(3,1)$, konfigurasi diatas dapat diselesaikan dalam langkah-langkah berikut.
+
+\begin{center}
+    \includegraphics[width=100px]{Movelist}
+\end{center}
+
+Dapatkah Anda membantu Arvy?
+
+\subsection*{Format Masukan}
+
+Baris pertama terdiri dari dua bilangan positif $N$ dan $M$ ($1 \leq N \leq 100.000$, $1 \leq M \leq 100.000$, $1 \leq N \times M \leq 100.000$) yang menyatakan ukuran baris dan kolom papan permainan.
+$N$ baris selanjutnya diisi dengan masing-masing $M$ karakter yang merupakan salah satu dari: X, -, K, O.
+
+\begin{itemize}
+    \setlength\itemsep{0pt}
+    \item Karakter X merupakan sebuah perangkap sehingga tidak bisa dilewati,
+    \item Karakter - berarti petak tidak ditempati hal apapun dan dapat dilewati,
+    \item Karakter K menunjukkan adanya kuda pada petak tersebut, dan
+    \item Karakter O adalah titik tujuan kuda catur.
+\end{itemize}
+
+Baris terakhir terdiri dari 2 bilangan positif $A$ dan $B$ ($1 \leq A \leq 100.000$, $1 \leq B \leq 100.000$) yaitu ukuran langkah secara vertikal dan horizontal yang dapat dilakukan oleh kuda.
+
+\subsection*{Format Keluaran}
+
+Sebuah bilangan bulat positif yang menyatakan  langkah minimum yang harus dilakukan agar kuda dapat mencapai titik tujuannya.
+\\
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+6 5
+X----
+--X--
+-K---
+O-X--
+----X
+-----
+3 1
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+3
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada contoh di atas, langkah minimum yang bisa didapatkan adalah 3, sesuai dengan deskripsi yang ada pada soal.
+\pagebreak
+
+\end{document}
+

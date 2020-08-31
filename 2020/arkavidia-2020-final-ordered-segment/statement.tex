@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Competitive Programming - Arkavidia VI}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Pantulan} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 64MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Elza adalah remaja berumur 18 tahun yang rajin dan hobi membaca buku.
+Hobinya tersebut didapat dari ayahnya yang juga hobi membaca buku.
+Waktu kecil ayahnya selalu membacakannya dongeng hingga Elza kecil tertidur.
+Momen indah itu selalu Elza ingat saat Elza senang maupun sedih.
+Kini Elza sudah menjadi mahasiswa.
+Kesibukan mengerjakan tugas dan belajar tidak menghalangi Elza untuk membaca buku.
+Elza sangat senang membaca buku.
+
+Cahaya matahari kemerahan menyinari kamar Elza dan menemaninya terhanyut dalam buku yang ia baca.
+Di kamarnya, Elza memiliki sebuah lemari yang menyimpan $N$ buah buku miliknya. Setiap buku ke-$i$ 
+memiliki banyak halaman sebanyak $X_i$.
+
+Lemari tersebut memantulkan keindahan cahaya kejinggaan yang didapat dari pantulan buku - buku milik Elza.
+Elza yang suka akan keindahan, menginginkan agar lemari memantulkan keindahan yang diinginkannya.
+Agar lemari dapat memantulkan cahaya dengan keindahan yang diinginkan Elza,
+Elza ingin agar buku - buku di lemarinya memiliki $Q$ bagian-bagian, dengan masing-masing bagian terdiri dari buku indeks
+$L_i$ dan $R_i$ (inklusif) memiliki jumlah halaman yang terurut menaik.
+
+Bantulah Elza untuk menentukan apakah di setiap rentang $L$ dan $R$, buku - buku yang terpasang terurut menaik agar menghasilkan keindahan pantulan cahaya yang diinginkan oleh Elza.
+
+\subsection*{Format Masukan}
+
+Baris pertama berisi sebuah bilangan bulat $N$ ($1 \leq N \leq 100.000$) yang merupakan jumlah buku yang dimiliki Elza.
+Baris kedua berisi $N$ buah bilangan bulat $X$ dipisahkan dengan spasi. $X_i$ ($1 \leq X_i \leq 100.000$) menyatakan jumlah halaman buku ke-i yang dimiliki Elza.
+
+Baris ketiga berisi sebuah bilangan bulat $Q$ ($1 \leq Q \leq 100.000$) yang merupakan banyaknya bagian buku agar menciptakan pantulan yang indah.
+$Q$ baris berikutnya berisi sebuah rentang $L$ dan $R$ ($1 \leq L \leq R \leq N$) yang menyatakan rentang yang diperlukan agar memantulkan keindahan cahaya yang diinginkan Elza.
+
+\subsection*{Format Keluaran}
+
+Berisi $Q$ baris berupa nilai "YA" (tanpa tanda kutip) 
+jika buku dengan rentang $L_i$ dan $R_i$ sudah memantulkan keindahan yang diinginkan Elza 
+atau "TIDAK" (tanpa tanda kutip) jika tidak.
+\\
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+7
+2 4 5 2 1 2 3
+3
+1 3
+2 5
+6 6
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+YA
+TIDAK
+YA
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Nilai indeks array pada rentang $[1\ldots3]$ terurut menaik sedangkan nilai indeks array pada rentang $[2\ldots5]$ tidak terurut menaik.
+
+\pagebreak
+
+\end{document}

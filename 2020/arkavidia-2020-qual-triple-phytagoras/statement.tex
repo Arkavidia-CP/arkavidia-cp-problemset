@@ -1,0 +1,93 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Competitive Programming - Arkavidia VI}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Triple Phytagoras Palsu} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 64MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Pak Joni sangat menyukai bilangan. Beberapa dari bilangan yang ia sukai adalah 
+bilangan-bilangan yang membentuk Triple Pythagoras. 
+Triple Phytagoras adalah sebuah triple ($a, b, c$) dengan $a, b, c$ adalah bilangan asli sedemikian rupa sehingga 
+$a^2 + b^2 = c^2$. Tetapi, ia tidak menyukai Triple Phytagoras yang palsu, yaitu Triple Phytagoras yang semua bilangan 
+pembentuknya tidak saling relatif prima dan dapat dibagi bilangan bulat lebih dari 1 tertentu sehingga mendapatkan Triple Phytagoras lain. 
+Sebagai contoh ($6, 8, 10$) adalah Triple Phytagoras palsu karena bilangan pembentuknya 
+tidak saling relatif prima dan jika tiap bilangan pembentuknya dibagi 2 maka akan 
+menghasilkan ($3, 4, 5$) yang juga merupakan Triple Phytagoras.
+
+Pak Joni memiliki bilangan ganjil $N$. Bantulah Pak Joni untuk mencari banyaknya Triple Phytagoras tidak palsu yang memiliki bentuk ($N, A, B$)!
+
+
+\subsection*{Format Masukan}
+
+Masukan berupa satu bilangan $N$ ($1 \leq N \leq 10^{18}$).
+
+\subsection*{Format Keluaran}
+
+Keluaran berupa satu bilangan yang menyatakan banyaknya Triple Phytagoras ($N, A, B$) yang tidak palsu.
+\\
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+3
+
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+1
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Terdapat satu Triple Phytagoras tidak palsu yang berbentuk ($3, A, B$), yaitu ($3, 4, 5$).
+
+\pagebreak
+
+\end{document}

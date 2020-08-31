@@ -1,0 +1,107 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Competitive Programming - Arkavidia V}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Tugas} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 512MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Elza mendapat tugas dari guru matematikanya di SDnya untuk mengerjakan beberapa soal perhitungan menggunakan operasi penjumlahan dan perkalian. Setiap soalnya berisi suatu ekspresi matematika dengan $N$ bilangan asli diselingi dengan $N-1$ operator penambahan ($+$) atau perkalian ($*$). Elza diminta oleh gurunya mengevaluasi persamaan tersebut dengan memperhatikan urutan operasi, yaitu operasi perkalian harus dilakukan sebelum operasi penjumlahan.
+
+Setelah mengerjakan beberapa dari soal tersebut, Elza menyadari bahwa setiap soal tidak berbeda jauh dari soal sebelumnya. Tampaknya guru tersebut hanya mengubah beberapa angka dan operator yang ada dari soal sebelumnya. Elza ingin mengekploitasi fakta ini, tapi Elza tidak tahu caranya. Oleh karena itu, dia meminta bantuan Anda, pemrogram profesional untuk membantunya mengerjakan tugasnya tersebut.
+
+Perhatikan bahwa karena hasil evaluasi dapat bernilai sangat besar, cukup keluarkan hasil evaluasi setelah dimodulo $10^9+7$.
+
+\subsection*{Format Masukan}
+
+Baris pertama terdiri dari dua bilangan bulat positif $N\:Q$ ($1 \leq N, Q \leq 100.000$), menyatakan banyaknya bilangan asli dalam ekspresi tersebut dan banyak query yang ditanyakan. 
+
+Baris kedua terdiri dari $N$ bilangan asli diselingi dengan $N-1$ operator penambahan atau perkalian, $a_1\:c_1\:a_2\:c_2\ldots a_N$ ($0 \leq a_i < 10^9+7, c \in \{+,*\}$).
+
+$Q$ baris berikutnya berisi \textit{query} dengan format :
+\begin{enumerate}
+    \setlength\itemsep{0pt}
+    \item $1\:n\:x$, artinya ubah bilangan ke-$n$ dengan nilai $x$
+    \item $2\:m\:c$, artinya ubah operator ke-$m$ dengan operator $c$
+    \item $3$, artinya Anda diminta mengeluarkan hasil evaluasi dari persamaan yang ada sekarang
+\end{enumerate}
+($1 \leq n \leq N, 0 \leq x < 10^9+7, 1 \leq m \leq N-1, c \in \{+,*\}$). Dipastikan query ketiga ditanyakan minimal sekali.
+
+\subsection*{Format Keluaran}
+
+Untuk setiap query ketiga, keluarkan suatu baris berisi satu bilangan $v$ berisi hasil evaluasi ekspresi yang ada, dimodulo $10^9+7$.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+4 7
+3 * 7 * 2 + 4
+3
+1 4 3
+2 3 *
+3
+1 2 5
+2 2 +
+3
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+46
+126
+21
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Ketiga query tersebut mengevaluasi $3 * 7 * 2 + 4 = 46$, $3 * 7 * 2 * 3 = 126$, dan $3 * 5 + 2 * 3 = 21$.
+
+\pagebreak
+
+\end{document}
+

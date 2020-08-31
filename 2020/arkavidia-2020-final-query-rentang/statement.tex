@@ -1,0 +1,106 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Competitive Programming - Arkavidia VI}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Baris} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 64MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Soal mengenai rentang pada Kompetisi Arkavidia sangatlah menantang.
+Elza yang merupakan salah satu peserta ingin melakukan survei mengenai berapa baris kode yang dibutuhkan untuk menyelesaikan soal tersebut kepada $N$ buah tim.
+
+Sayangnya, mereka tahu jika menjawab pertanyaan Elza dengan tepat maka akan memudahkan Elza untuk mengerjakan soal tersebut.
+Oleh karenanya, mereka bersepakat untuk menjawab pertanyaan Elza dengan hanya memberikan rentang dengan batas $L$ dan $R$ yang artinya baris yang mereka butuhkan berada di antara $L$ dan $R$ rentang tersebut.
+Dari hasil survei yang dilakukan, 
+Elza memiliki $N$ buah data rentang $L_i$ dan $R_i$ yang merupakan banyaknya baris yang dibutuhkan untuk tim ke-$i$ menyelesaikan soal tersebut.
+
+Elza yang kesal karena tidak diberitahu jumlah pasti dari baris yang dibutuhkan untuk menyelesaikan soal memilih untuk bermain dengan data yang ia punya.
+Anda yang pandai dalam membuat program akhirnya ditantang Elza untuk bermain dengannya.
+Elza memberikan $Q$ buah tebakan yang di setiap tebakannya berisi rentang $X_j$ dan $Y_j$.
+Anda diminta untuk mencari banyaknya tim yang dapat menyelesaikan soal dengan rentang $L_i$ dan $R_i$ baris yang memenuhi $L_i \leq X_j \leq Y_j \leq R_i$.
+
+
+\subsection*{Format Masukan}
+Baris pertama berisi sebuah bilangan bulat $N$ ($1 \leq N \leq 1.000.000$) yang menyatakan banyaknya tim yang disurvei oleh Elza.
+
+$N$ baris berikutnya adalah batas rentang $L_i$ dan $R_i$ ($0 \leq L_i \leq R_i \leq 2000$) dengan $L_i$ dan $R_i$ merupakan rentang banyaknya baris yang dibutuhkan tim ke-$i$ untuk menyelesaikan soal.
+
+Satu baris berikutnya berisi sebuah bilangan bulat $Q$ ($1 \leq Q \leq 1.000.000$) berupa jumlah tebakan yang diberikan Elza.
+
+$Q$ baris berikutnya adalah batas rentang \textit{query} $X_j$ dan $Y_j$ ($0 \leq X_j \leq Y_j \leq 2000$) tebakan yang diberikan Elza. 
+
+\subsection*{Format Keluaran}
+Berisi $Q$ buah bilangan bulat $Z$. $Z_j$ merupakan banyaknya rentang yang memenuhi untuk tebakan ke $j$.
+\\
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+2
+2 5
+1 8
+2
+1 3
+2 2
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+1
+2
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Untuk tebakan pertama, terdapat 1 tim (tim kedua) yang memenuhi, karena $1 \leq 1 \leq 8$ dan $1 \leq 3 \leq 8$.
+
+Untuk tebakan kedua, terdapat 2 tim (tim pertama dan kedua) yang memenuhi.
+
+\pagebreak
+
+\end{document}

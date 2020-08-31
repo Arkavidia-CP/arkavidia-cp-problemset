@@ -1,0 +1,111 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Competitive Programming - Arkavidia VI}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Virtual Contest} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 64MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Di Negeri Arkavy sedang diadakan sebuah kontes pemrograman antar penduduk. Elza yang merupakan penggemar 
+pemrograman pun ingin mengikuti kontes pemrograman paling bergengsi di Negerinya ini. Sayangnya, saat waktu kontes tiba,
+Elza mendadak sakit hingga tidak dapat mengikut kontes pemrograman tersebut. Anne selaku ketua penyelenggara kontes 
+pemrograman di Negeri Arkavy memang baik hati. Dia menyediakan sebuah kontes virtual, dimana seseorang dapat mengikuti 
+kontes pemrograman tersebut setelah kontes pemrograman non-virtualnya telah selesai dilaksanakan. Elza pun cukup bahagia mendengar
+kabar tersebut dan dia memutuskan akan mengikuti kontes virtual tersebut.
+
+Peringkat pada kontes pemrograman (baik yang virtual maupun tidak) di Negeri Arkavy ditentukan oleh skor, skor yang paling tinggi akan mendapat peringkat satu. 
+Peringkat peserta pada kontes pemrograman non-virtual akan dimasukkan ke peringkat kontes pemrograman virtual. Menyadari sistem 
+peringkat kontes virtual seperti ini, Elza lantas berpikir peringkatnya mungkin bisa saja berubah-ubah seiringnya ada peserta baru 
+yang mengikuti kontes virtual. Dirinya pun sekarang penasaran, jika ada beberapa orang yang mengikuti kontes virtual tersebut dan mendapatkan skor tertentu, dia 
+sesekali akan bertanya berapa skor yang dimiliki oleh peringkat $X$. Sebagai teman baik Elza, Anda tentu ingin membantunya.
+
+\subsection*{Format Masukan}
+Baris pertama berisi sebuah bilangan bulat $N$ ($1 \leq N \leq 20.000$) yang menyatakan banyaknya peserta kontes pemrograman non-virtual.
+Baris kedua terdapat $N$ buah angka $a_i$ ($1 \leq a_i \leq 10^9$), yang menyatakan skor peserta kontes pemrograman non-virtual. Baris ketiga berisi bilangan bulat $Q$ ($1 \leq Q \leq 30.000$), yakni banyaknya \textit{query} yang sedang dipikirkan Elza.
+$Q$ Baris berikutnya berisi salah satu dari 2 tipe input :
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \item Input berupa ``1 $X$" yang berarti terdapat peserta virtual contest baru dan mendapat skor $X$ ($1 \leq X \leq 10^9$).
+    \item Input berupa ``2 $X$" yang berarti Elza menanyakan skor orang dengan peringkat $X$ saat itu.
+\end{itemize}
+Untuk setiap \textit{query} tipe-2, dipastikan bahwa banyak peserta yang masuk dalam peringkat kontes virtual tidak kurang dari peringkat yang ditanyakan.
+
+\subsection*{Format Keluaran}
+
+Untuk setiap query berupa ``2 $X$", tuliskan skor peserta pada peringkat tersebut.
+\\
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+6
+98 66 59 57 34 12
+6
+2 3
+1 61
+2 3
+1 98
+2 1
+2 2
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+59
+61
+98
+98
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+% \subsection*{Penjelasan}
+% Asumsikan $x$ tidak melebihi jumlah peserta saat itu
+
+\pagebreak
+
+\end{document}
+
