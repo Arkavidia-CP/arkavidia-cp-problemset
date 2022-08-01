@@ -1,0 +1,110 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Penyisihan Competitive Programming - Arkavidia 7.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{B - Buku Raja} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1.5s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Raja Aleks mempunyai buku-buku yang dinomori dari $1$ sampai $N$, buku-buku ini awalnya dijejerkan rapat secara acak dalam satu baris. Raja Aleks memerintahkan Sandra untuk mencari suatu buku bernomor $X$ dan menaruhnya di paling depan barisan buku tersebut, kemudian mendorong buku agar rapat kembali.
+
+\begin{center}
+\includegraphics[scale=0.3]{buku.png}
+\end{center}
+
+Sandra dapat pergi dari satu buku ke buku disampingnya selama satu detik. Pada awalnya Sandra ada di paling depan barisan buku, dan tentunya harus kembali ke paling depan barisan buku setelah mengambil suatu buku yang diperintahkan. Sandra disuruh memenuhi perintah sebanyak $M$ kali, Anda sebagai pengawas disana ingin mencari waktu total yang dibutuhkan Sandra untuk melakukan semua perintah Aleks!
+
+\subsection*{Format Masukan}
+Baris pertama berisi dua buah bilangan $N$ dan $M$ $(1 \leq N, M \leq 10^5)$, menyatakan banyaknya buku dan banyaknya perintah.
+
+Baris kedua berisi $N$ bilangan bulat $B_1, B_2, ..., B_N$, $(1 \leq B_i \leq N)$ berupa permutasi nomor-nomor buku yang dijejerkan.
+
+$M$ baris berikutnya berupa satu bilangan bulat $X$ $(1 \leq X \leq N)$, menyatakan nomor buku yang perlu ditaruh paling depan.\\
+
+\textbf{Catatan:}
+
+Barisan $N$ bilangan bulat disebut permutasi jika barisan tersebut berisi semua bilangan bulat dari $1$ sampai $N$ tepat sekali.
+
+\subsection*{Format Keluaran}
+Satu baris berisi sebuah bilangan bulat berupa total waktu yang dibutuhkan Sandra untuk memenuhi semua perintah Aleks
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+5 4
+1 5 4 3 2
+3
+5
+4
+4
+
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+16
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada awalnya barisan bukunya adalah $\left[1,5,4,3,2\right]$.
+\begin{itemize}
+\item{Saat mengambil buku nomor 3 dibutuhkan 3 + 3 = 6 detik, sekarang barisan buku menjadi $\left[3,1,5,4,2\right]$}
+\item{Saat mengambil buku nomor 5 dibutuhkan 2 + 2 = 4 detik, sekarang barisan buku menjadi $\left[5,3,1,4,2\right]$}
+\item{Saat mengambil buku nomor 4 dibutuhkan 3 + 3 = 6 detik, sekarang barisan buku menjadi $\left[4,5,3,1,2\right]$}
+\item{Saat mengambil buku nomor 4 dibutuhkan 0 detik, karena sudah berada di paling depan}
+\end{itemize}
+Total waktu yang dibutuhkan: 6 + 4 + 6 = 16 detik
+
+\end{document}

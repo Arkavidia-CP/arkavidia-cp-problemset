@@ -1,0 +1,38 @@
+# FINAL
+bash generate-problem.sh FWA arkavidia-2021-finaltrial-gudangmagnetik "Gudang Magnetik" 1 512 FinalTrial
+bash generate-problem.sh FWB arkavidia-2021-finaltrial-maximum-odd "Jumlahan Ganjil" 1 256 FinalTrial
+bash generate-problem.sh FWC arkavidia-2021-finaltrial-ordered-segment "Pantulan" 1 256 FinalTrial
+bash generate-problem.sh FWD arkavidia-2021-finaltrial-sebuah-pola-bilangan "Pola" 1 256 FinalTrial
+
+# FINAL
+bash generate-problem.sh FA arkavidia-2021-final-amanvidia "Amanvidia" 2 512 Final
+bash generate-problem.sh FB arkavidia-2021-final-bonfire-lit "Bonfire Lit" 1 256 Final
+bash generate-problem.sh FC arkavidia-2021-final-compression "Compression" 3 256 Final
+bash generate-problem.sh FD arkavidia-2021-final-daniel-bermain-tetris "Daniel Bermain Tetris" 1 256 Final
+bash generate-problem.sh FE arkavidia-2021-final-exor "ExOR" 1 512 Final
+bash generate-problem.sh FF arkavidia-2021-final-fungsi-acak "Fungsi Acak" 2 256 Final
+bash generate-problem.sh FG arkavidia-2021-final-gembok-kurama "Gembok Kurama" 5 256 Final
+bash generate-problem.sh FH arkavidia-2021-final-hiasan-dinding "Hiasan Dinding" 1 256 Final
+bash generate-problem.sh FI arkavidia-2021-final-indra-dan-senjata "Indra dan Senjata" 2 1024 Final
+bash generate-problem.sh FJ arkavidia-2021-final-jam-kerja "Jam Kerja" 2 512 Final
+bash generate-problem.sh FK arkavidia-2021-final-kalkulator "Kalkulator" 5 256 Final
+bash generate-problem.sh FL arkavidia-2021-final-luffy-mencari-three-piece "Luffy Mencari Three Piece" 4 256 Final
+
+# QUALS
+bash generate-problem.sh A arkavidia-2021-qual-ambil-batu "Ambil Batu" 1 256
+bash generate-problem.sh B arkavidia-2021-qual-buku-raja "Buku Raja" 1.5 256
+bash generate-problem.sh C arkavidia-2021-qual-cokelat-dan-permen "Cokelat dan Permen" 2 256
+bash generate-problem.sh D arkavidia-2021-qual-dvd "DVD" 2 256
+bash generate-problem.sh E arkavidia-2021-qual-emordnilap "Emordnilap" 2 256
+bash generate-problem.sh F arkavidia-2021-qual-farming-buah "Farming Buah" 2 256
+bash generate-problem.sh G arkavidia-2021-qual-gcd-mania "GCD Mania" 2 256
+bash generate-problem.sh H arkavidia-2021-qual-hadiah-untuk-kembaran "Hadiah untuk Kembaran" 1 256
+bash generate-problem.sh I arkavidia-2021-qual-indra-dan-pizza "Indra dan Pizza" 1 256
+bash generate-problem.sh J arkavidia-2021-qual-jumlah-opat "Jumlah Opat" 2 256
+
+# WARMUP QUALS
+bash generate-problem.sh WA arkavidia-2021-qualtrial-minimum-xor "Minimum XOR" 1 256
+bash generate-problem.sh WB arkavidia-2021-qualtrial-bitwise "Bitwise" 1 256
+bash generate-problem.sh WC arkavidia-2021-qualtrial-carifibonacci "Cari Fibonacci" 1 256
+bash generate-problem.sh WD arkavidia-2021-qualtrial-xor-beruntun "XOR Beruntun" 1 256
+bash generate-problem.sh WE arkavidia-2021-qualtrial-segitiga "Membuat Segitiga" 1 256

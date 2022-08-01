@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+\lfoot{Editorial Penyisihan Competitive Programming - Arkavidia 7.0}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{titlepage}
+  \vfill
+  \thispagestyle{empty}
+	\centering
+	\includegraphics{logo-vertical.png}\par\vspace{1cm}
+	\vspace{1.5cm}
+	{\huge\bfseries Editorial Penyisihan Competitive Programming Arkavidia 7.0\par}
+	\vfill
+\end{titlepage}
+
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{headerarkav.png}}
+  }
+}
+
+\pagebreak
+\tableofcontents
+
+\pagebreak
+\input{arkavidia-2021-qual-ambil-batu/editorial}
+\pagebreak
+\input{arkavidia-2021-qual-buku-raja/editorial}
+\pagebreak
+\input{arkavidia-2021-qual-cokelat-dan-permen/editorial}
+\pagebreak
+\input{arkavidia-2021-qual-dvd/editorial}
+\pagebreak
+\input{arkavidia-2021-qual-emordnilap/editorial}
+\pagebreak
+\input{arkavidia-2021-qual-farming-buah/editorial}
+\pagebreak
+\input{arkavidia-2021-qual-gcd-mania/editorial}
+\pagebreak
+\input{arkavidia-2021-qual-hadiah-untuk-kembaran/editorial}
+\pagebreak
+\input{arkavidia-2021-qual-indra-dan-pizza/editorial}
+\pagebreak
+\input{arkavidia-2021-qual-jumlah-opat/editorial}
+
+\end{document}

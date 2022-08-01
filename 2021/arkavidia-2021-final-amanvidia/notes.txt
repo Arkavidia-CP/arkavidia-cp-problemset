@@ -1,0 +1,3 @@
+scorer: buat tcframe
+validator: buat domjudge
+bedanya ada di dalem fungsi ac() sama wa(), dan di con_out (tcframe) dan cin (domjudge) buat baca hasil output program peserta

@@ -1,0 +1,26 @@
+\section*{Problem F - Farming Buah}
+\addcontentsline{toc}{section}{Problem F - Farming Buah}
+\textit{Author: Muhammad Kamal Shafi}
+\\
+\textit{Expected Difficulty: Medium}
+\newline
+\newline
+Soal ini dapat diselesaikan dengan observasi sederhana. Perhatikan bahwa untuk memanen buah dengan jarak yang minimum, terdapat edge yang dilewati 1 kali dan terdapat edge yang dilewati 2 kali. Edge yang dilewati 1 kali akan membentuk path dari sebuah leaf ke leaf lainnya. Maka dari itu, diperlukan path dari leaf ke leaf yang paling jauh, sehingga jarak yang ditempuh adalah jarak minimum.
+\newline
+\newline
+Sehingga jarak tempuh minimum $(D_{min})$:
+$$ D_{min} = 2 \sum\limits_{i=1}^{N-1} W_i - \sum\limits_{i \in \text{Diameter}} W_i$$
+
+Setelah itu, untuk membentuk path keseluruhan yang minimum secara leksikografis dapat dilakukan dengan greedy. Yaitu, dengan memberi tanda pada node yang dapat menjadi bagian dari diameter.
+\newline
+\newline
+Kode solusi: \url{https://ideone.com/KVeGYm}
+
+Kompleksitas Waktu: $O(N \log N)$.
+
+Catatan Panitia: Jeremiah Gottwald \\
+
+\begin{center}
+    \includegraphics[scale=1]{jeremiah.jpg} \\
+    sumber: {\footnotesize \url{https://www.pinterest.com/pin/403424079112028538/}}
+\end{center}

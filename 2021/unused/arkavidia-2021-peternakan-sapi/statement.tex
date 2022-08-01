@@ -1,0 +1,142 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Penyisihan Competitive Programming - Arkavidia VII}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Peternakan Sapi} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 128MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Pada Peternakan Arkavidia, terdapat $N$ sapi dan $N$ slot, masing-masing dari sapi tersebut berada di satu slot dan slot tersebut dinomori dari $1$ sampai $N$. Pada awalnya, sapi ke-$i$ berada pada slot ke-$i$. Setiap sapi ke-$i$ memiliki tingkat kehausan $H_i$, dan dapat berubah tingkat kehausannya sewaktu-waktu. Arvy, seorang peternak disana akan mengurusi beberapa hal pada peternakan tersebut:
+
+\begin{enumerate}
+\item Memberikan minuman sapi-sapi yang berada pada slot ke-$L$ sampai slot ke-$R$ ($L \leq R$), untuk hal ini, Arvy perlu mengetahui nilai tingkat kehausan minimal dan maksimal sapi-sapi dari $L$ sampai $R$ (inklusif) agar bisa memberikan minuman yang optimal.
+\item Menukar posisi sapi pada slot ke-$X$ dengan posisi sapi pada slot ke-$Y$ $(X \neq Y)$.
+\item Memberikan minuman khusus untuk sapi ke-$X$, yang dapat mengubah tingkat kehausannya menjadi $V$.
+\item Melakukan \textit{reverse} posisi sapi dari slot ke-$L$ sampai slot ke-$R$, artinya:
+
+\begin{center}
+Posisi yang awalnya $\left[L, L + 1, \dots, R - 1, R\right]$ menjadi $\left[R, R - 1, \dots, L + 1, L\right]$
+\end{center}
+\end{enumerate}
+
+Setelah peternakan-nya semakin membesar, Arvy mulai kesusahan dan meminta bantuan Anda untuk mengurusi peternakan. Bantulah Arvy!
+
+\subsection*{Format Masukan}
+Baris pertama berisi bilangan bulat positif $N$, $(2 \leq N \leq 10^5)$, menyatakan banyaknya sapi yang ada.
+
+Baris kedua berisi $N$ bilangan bulat positif, $H_i$ $(1 \leq H_i \leq 10^9)$, untuk setiap $i$ $(1 \leq i \leq N)$, menyatakan tingkat kehausan sapi ke-$i$.
+
+Baris ketiga berisi bilangan bulat positif $Q$, $(1 \leq Q \leq 10^5)$, menyatakan operasi yang perlu dilakukan Arvy.
+
+Setiap $Q$ baris selanjutnya berisi salah satu dari tiga bentuk masukkan berikut:
+\begin{itemize}
+\item $1$ $L$ $R$ $(1 \leq L \leq R \leq N)$
+(Mencari nilai minimum dan maksimum tingkat kehausan sapi dari slot ke-$L$ sampai slot ke-$R$)
+\item $2$ $X$ $Y$ $(1 \leq X, Y \leq N, X \neq Y)$
+(Menukar posisi sapi di slot ke-$X$ dengan posisi sapi di slot ke-$Y$)
+\item $3$ $X$ $V$ $(1 \leq X \leq N, 1 \leq V \leq 10^9)$
+(Mengubah tingkat kehausan sapi di slot ke-$X$ dengan nilai $V$)
+\item $4$ $L$ $R$ $(1 \leq L \leq R \leq N)$
+(Melakukan reverse posisi sapi dari slot ke-$L$ sampai slot ke-$R$)
+\end{itemize}
+
+\textbf{Catatan:}
+
+Dijamin terdapat minimal satu buah operasi bentuk pertama
+
+\subsection*{Format Keluaran}
+Untuk setiap operasi bentuk pertama keluarkan sebuah baris berisi dua bilangan bulat positif, menyatakan nilai minimum dan nilai maksimum tingkat kehausan sapi yang dicari.
+
+\pagebreak
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+5
+1 5 2 3 9
+10
+1 3 5
+3 3 10
+1 3 5
+1 1 5
+1 1 3
+2 1 5
+4 1 3
+1 2 5
+3 3 6
+1 2 4
+
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+2 9
+3 10
+1 10
+1 10
+1 9
+3 6
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada awalnya, tingkat kehausan setiap sapi dari slot 1 sampai 5 adalah [1, 5, 2, 3, 9]
+\begin{itemize}
+\item Pada operasi ke-1, nilai minimum dan maksimum tingkat kehausan dari sapi di slot-3 sampai slot-5 adalah 2 dan 9
+\item Pada operasi ke-2, sapi di slot-3 berubah tingkat kehausannya menjadi 10, sehingga tingkat kehausan masing-masing sapi di tiap slot menjadi [1, 5, 10, 3, 9]
+\item Pada operasi ke-3, nilai minimum dan maksimum tingkat kehausan dari sapi di slot-3 sampai slot-5 adalah 3 dan 10
+\item Pada operasi ke-4, nilai minimum dan maksimum tingkat kehausan dari sapi di slot-1 sampai slot-5 adalah 1 dan 10
+\item Pada operasi ke-5, nilai minimum dan maksimum tingkat kehausan dari sapi di slot-1 sampai slot-3 adalah 1 dan 10
+\item Pada operasi ke-6, sapi di slot-1 ditukar dengan sapi di slot-5, sehingga tingkat kehausan masing-masing sapi di tiap slot menjadi [9, 5, 10, 3, 1]
+\item Pada operasi ke-7, lakukan reverse slot-1 sampai slot-3, sehingga tingkat kehausan masing-masing sapi di tiap slot menjadi [10, 5, 9, 3, 1]
+\item Pada operasi ke-8, nilai minimum dan maksimum tingkat kehausan dari sapi di slot-2 sampai slot-5 adalah 1 dan 9
+\item Pada operasi ke-9, sapi di slot-3 berubah tingkat kehausannya menjadi 6, sehingga tingkat kehausan masing-masing sapi di tiap slot menjadi [10, 5, 6, 3, 1]
+\item Pada operasi ke-10, nilai minimum dan maksimum tingkat kehausan dari sapi di slot-2 sampai slot-5 adalah 3 dan 6
+\end{itemize}
+
+\end{document}

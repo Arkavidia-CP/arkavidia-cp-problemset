@@ -1,0 +1,98 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Final Competitive Programming - Arkavidia 7.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{C - Compression} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 128MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Diberikan sebuah string $S$ yang terdiri dari huruf kecil \lstinline|a| sampai \lstinline|z|.
+
+Terdapat sebuah cara untuk melakukan kompresi pada string $S$. Untuk melakukan kompresi pada string $S$ dapat dilakukan dengan menulis huruf kecil \lstinline|a| sampai \lstinline|z|  atau dengan notasi kelipatan substring. Anda diberikan harga untuk menuliskan notasi kelipatan substring dan harga untuk menuliskan masing-masing huruf. Tentukan harga minimum untuk menuliskan string $S$.
+
+Contoh penggunaan notasi kelipatan substring:
+\begin{itemize}
+\item string \lstinline|b3(ab)b| sama dengan string \lstinline|babababb|
+\item string \lstinline|3(c)| sama dengan string \lstinline|ccc|
+\end{itemize}
+
+\subsection*{Format Masukan}
+Baris pertama berisi bilangan bulat $N$ $(1 \leq N \leq 700)$, menyatakan panjang string $S$
+
+Baris kedua berisi string $S$ yang terdiri dari huruf kecil alfabet.
+
+Baris ketiga berisi bilangan bulat $K$ $(1 \leq K \leq 10^6)$, menyatakan harga untuk menuliskan notasi kelipatan substring.
+
+Baris keempat berisi 26 bilangan bulat $C_1, C_2, \dots, C_{26}$ $(1 \leq C_i \leq 10^6)$, menyatakan harga masing-masing huruf berurutan dari \lstinline|a| sampai \lstinline|z|.
+
+\subsection*{Format Keluaran}
+Keluarkan satu baris berisi sebuah bilangan bulat menyatakan harga minimum untuk menuliskan string $S$
+
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+13
+aaabaaabaaabc
+2
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+\end{lstlisting}
+
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+7
+\end{lstlisting}
+
+\subsection*{Penjelasan}
+String $S$ dapat ditulis dengan notasi \lstinline|3(3(a)b)c|. sehingga dibutuhkan harga 1 
+untuk menuliskan masing2 huruf \lstinline|a|, \lstinline|b|, dan \lstinline|c|. dan 2 kali penulisan notasi kelipatan.
+
+Sehingga total harganya adalah $1 + 1 + 1 + 2 + 2 = 7$
+
+\end{document}

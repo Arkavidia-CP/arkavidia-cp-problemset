@@ -1,0 +1,31 @@
+\section*{Problem H - Hadiah untuk Kembaran}
+\addcontentsline{toc}{section}{Problem H - Hadiah untuk Kembaran}
+\textit{Author: Muhammad Hasan}
+\\
+\textit{Expected Difficulty: Easy}
+
+Soal ini cukup mudah, kita hanya perlu mengetahui KPK dari nomor favorit budi dan dono untuk mengetahui nomor mana saja yang tidak akan diambil. Menghitung KPK dari dua angka $X$ dan $Y$, dapat dihitung dengan GCD/FPB sebagai berikut:
+
+$$ KPK(X, Y) = \frac{X \times Y}{FPB(X, Y)}$$
+
+Kita akan dapat bahwa jawaban dari soal ini adalah:
+
+Banyaknya hadiah yang diambil Budi $(H_{Budi})$:
+\begin{align*}  
+    H_{Budi} &= \text{Banyaknya hadiah yang habis dibagi X} - \text{Banyaknya hadiah yang habis dibagi X dan Y} \\
+    &= \left \lfloor \frac{N}{X} \right \rfloor - \left \lfloor \frac{N}{KPK(X, Y)} \right \rfloor
+\end{align*}
+
+Banyaknya hadiah yang diambil Dono $(H_{Dono})$:
+\begin{align*}  
+    H_{Dono} &= \text{Banyaknya hadiah yang habis dibagi Y} - \text{Banyaknya hadiah yang habis dibagi X dan Y} \\
+    &= \left \lfloor \frac{N}{Y} \right \rfloor - \left \lfloor \frac{N}{KPK(X, Y)} \right \rfloor
+\end{align*}
+Untuk implementasinya, kita perlu menggunakan
+\lstinline|integer 64-bit|, dalam menghitung KPK.
+
+Kode solusi: \url{https://ideone.com/mbQNab}
+
+Kompleksitas Waktu: $O(\log N)$ untuk setiap testcase.
+
+Catatan Panitia: Pembuat soal juga kembar.

@@ -1,0 +1,35 @@
+\section*{Problem G - GCD Mania}
+\addcontentsline{toc}{section}{Problem G - GCD Mania}
+\textit{Author: Muhammad Kamal Shafi}
+\\
+\textit{Expected Difficulty: Easy-Medium}
+\newline
+\newline
+Untuk menyelesaikan soal ini, akan dilakukan observasi terlebih dahulu.
+
+Misal terdapat 2 bilangan positif $A$ dan $B$ ($A \leq B$), maka akan berlaku persamaan berikut,
+$$ GCD(A, B) = GCD(A, B - A)$$
+
+Hal tersebut juga tetap berlaku apa bila terdapat tiga bilangan $A, B$ dan $C$ ($A \leq B \leq C$),
+$$ GCD(A, B, C) = GCD(A, B - A, C - A)$$
+
+Dari situ terlihat bahwa untuk N buah bilangan terurut tidak menurun akan berlaku,
+$$ GCD(A_1, \dots, A_i, \dots, A_N) = GCD(A_1, \dots, A_i - A_1, \dots, A_N - A_1)$$
+
+Sehingga apabila seluruh bilangan ditambahkan dengan sebuah bilangan $X$ akan berlaku:
+
+\begin{align*}
+    GCD(A_1 + X, \dots, A_i + X, \dots, A_N + X) &= GCD(A_1 + X, \dots, A_i - A_1, \dots, A_N - A_1)
+    \\
+    GCD(A_1 + X, \dots, A_i + X, \dots, A_N + X) &= GCD(A_1 + X, GCD(A_2 - A_1, \dots, A_i - A_1, \dots, A_N - A_1))
+\end{align*}
+
+
+Maka untuk mendapatkan hasil $GCD$ maksimum dalam setiap query, dapat dilakukan iterasi terhadap faktor-faktor $GCD(A_2 - A_1, \dots, A_i - A_1, \dots, A_N - A_1)$ dan kemudian mengecek apakah terdapat $X$ $(L \leq X \leq R)$ yang dapat menghasilkan $GCD$ sebesar faktor tersebut.
+\newline
+\newline
+Kode solusi: \url{https://ideone.com/ICFcn8}
+
+Kompleksitas Waktu: $O(Q \log A)$.
+
+Catatan Panitia: Gaia adalah singkatan dari GCD Mania.

@@ -1,0 +1,30 @@
+# Ignore all
+*
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+# Latex and problem files
+*.o
+*.aux
+*.dvi
+*.log
+*.pdf
+*.toc
+*.in
+*.synctex.gz
+*.out
+*.exe
+*.zip
+*.fdb_latexmk
+*.fls
+
+# ignore testcases
+**/tc
+.vscode/*
+
+# ignore build file
+**build
+temp/

@@ -1,0 +1,156 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Final Competitive Programming - Arkavidia 7.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{I - Indra dan Senjata} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 2s \\    % jangan lupa ganti time limit
+        Batas Memori & 1024MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Indra bosan mengurus pizza, kini Indra hanya ingin  mengurus senjata. Terdapat $N$ senjata, yang dinomori dari 1 sampai $N$, dan diletakkan secara berbaris. Senjata ke-$i$ memiliki kekuatan $K_i$. Indra ingin melakukan beberapa operasi sebagai berikut:
+
+\begin{enumerate}
+
+\item Mencari jumlah total kekuatan senjata dari $L$ sampai $R$ $(1 \leq L \leq R \leq N)$, yang kekuatannya berada pada range $\left[P, Q\right]$ $(P \leq Q)$, informasi ini digunakan untuk persiapan dalam mengambil senjata.
+
+\item Mengganti senjata ke-$X$ dengan senjata baru yang memiliki kekuatan $V$
+
+\end{enumerate}
+
+Karena senjata yang ada sangat banyak, Indra meminta bantuan Anda untuk melakukan operasi-operasi tersebut, bantulah Indra!
+
+\subsection*{Format Masukan}
+
+Baris pertama berisi sebuah bilangan bulat positif $N$ $(1 \leq N \leq 10^5)$, menyatakan banyaknya senjata
+
+Baris kedua berisi $N$ bilangan bulat $K_i$ $(1 \leq K_i \leq 10^5)$, menyatakan kekuatan senjata ke-$i$, untuk setiap $1 \leq i \leq N$.
+
+Baris ketiga berisi sebuah bilangan bulat positif $Q$ $(1 \leq Q \leq 2 \times 10^4)$, menyatakan banyaknya operasi
+
+$Q$ baris selanjutnya berisi salah satu dari dua macam operasi sebagai berikut:
+
+\begin{itemize}
+
+\item $1$ $L$ $R$ $P$ $Q$ $(1 \leq L \leq R \leq N, 1 \leq P \leq Q \leq 10^5)$
+
+Menyatakan untuk mencari jumlah total dari $K_i$ dengan $(L \leq i \leq R)$ dengan ketentuan $(P \leq K_i \leq Q)$
+
+\item $2$ $X$ $V$ $(1 \leq X \leq N, 1 \leq V \leq 10^5)$
+
+Mengganti senjata ke-$X$ dengan senjata baru yang memiliki kekuatan $V$
+
+\end{itemize}
+
+\textbf{Catatan}:
+
+Dijamin terdapat minimal satu buah operasi bentuk pertama
+
+\subsection*{Format Keluaran}
+
+Untuk setiap operasi pertama, keluarkan sebuah baris berisi sebuah bilangan bulat, jawaban dari operasi tersebut
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+10
+5 4 9 3 4 9 5 14 13 21
+7
+1 1 10 10 20
+2 10 20
+1 1 10 10 20
+1 2 5 3 5
+2 4 10
+1 1 5 5 10
+1 2 3 10 15
+
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+27
+47
+11
+24
+0
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\pagebreak
+
+\subsection*{Penjelasan}
+
+Pada awalnya kekuatan senjata adalah $\left[5, 4, 9, 3, 4, 9, 5, 14, 13, 21\right]$
+
+\begin{itemize}
+
+\item Pada operasi pertama, senjata yang memiliki range kekuatan [10, 20] dari senjata ke-1 sampai senjata ke-10 adalah senjata ke-8 dan senjata ke-9, sehingga totalnya adalah $$K_8 + K_9 = 14 + 13 = 27$$
+\item Pada operasi kedua, kekuatan senjata ke-10 menjadi senjata baru dengan kekuatan = 20, kini kekuatan senjata menjadi $\left[5, 4, 9, 3, 4, 9, 5, 14, 13, 20\right]$
+\item Pada operasi ketiga, senjata yang memiliki range kekuatan [10, 20] dari senjata ke-1 sampai senjata ke-10 adalah senjata ke-8, senjata ke-9, dan senjata ke-10, sehingga totalnya adalah
+
+$$K_8 + K_9 + K_{10} = 14 + 13 + 20 = 47$$
+
+\item Pada operasi keempat, senjata yang memiliki range kekuatan [3, 5] dari senjata ke-2 sampai senjata ke-5 adalah senjata ke-2, senjata ke-4, dan senjata ke-5, sehingga totalnya adalah
+
+$$K_2 + K_4 + K_5 = 4 + 3 + 4 = 11$$
+
+\item Pada operasi kelima, kekuatan senjata ke-4 menjadi senjata baru dengan kekuatan = 10, kini kekuatan senjata menjadi $\left[5, 4, 9, 10, 4, 9, 5, 14, 13, 20\right]$
+\item Pada operasi keenam, senjata yang memiliki range kekuatan [5, 10] dari senjata ke-1 sampai senjata ke-5 adalah senjata ke-1, senjata ke-3, dan senjata ke-4, sehingga totalnya adalah
+
+$$K_1 + K_3 + K_4 = 5 + 9 + 10 = 24$$
+
+\item Pada operasi ketujuh, tidak ada kekuatan senjata yang memenuhi range, sehingga totalnya adalah 0
+
+\end{itemize}
+
+\pagebreak
+
+\end{document}

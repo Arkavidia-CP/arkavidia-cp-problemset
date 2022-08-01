@@ -1,0 +1,129 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Final Competitive Programming - Arkavidia 7.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{L - Luffy Mencari Three Pieces} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 2s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Luffy memiliki tiga buah bilangan asli $A_0$, $B_0$, $C_0$ dan $Q$ buah query.
+
+Pada setiap query, diberikan $S$ dan $T$, dengan $S$ bernilai karakter \lstinline|a|, \lstinline|b|, atau \lstinline|c|, serta $T$ bilangan bulat. Untuk setiap query ke-$i$, apabila:
+
+\begin{itemize}
+
+\item $S =$ \lstinline|a|, maka $A_i = A_{i - 1} + T$, $B_i = B_{i - 1}$, $C_i = C_{i - 1}$
+
+\item $S$ = \lstinline|b|, maka $A_i = A_{i - 1}$, $B_i = B_{i - 1} + T$, $C_i = C_{i - 1}$
+
+\item $S$ = \lstinline|c|, maka $A_i = A_{i - 1}$, $B_i = B_{i - 1}$, $C_i = C_{i - 1} + T$
+
+\end{itemize}
+
+Kemudian untuk setiap query ke-$i$ tersebut, Luffy ingin mencari banyaknya tripel bilangan bulat non-negatif $\left(D, E, F\right)$ sehingga terdapat bilangan real $0 < R < 1$ yang memenuhi:
+\begin{align*}
+D &< R \times A_i < D + 1 \\
+E &< R \times B_i < E + 1 \\
+F &< R \times C_i < F + 1
+\end{align*}
+
+Sayangnya Luffy sedang sibuk berpetualang, dia kemudian meminta bantuan Anda untuk menyelesaikan persoalan ini. Bantulah Luffy!
+
+\subsection*{Format Masukan}
+Baris pertama berisi tiga buah bilangan $A_0, B_0, C_0$ $(0 < A_0, B_0, C_0 < 10^6)$.
+
+Baris berikutnya berisi sebuah bilangan $Q$ $(1 \leq Q \leq 10^6)$.
+
+$Q$ baris berikutnya berisi sebuah karakter $S$ (bernilai sebuah karakter diantara \lstinline|a|, \lstinline|b|, atau \lstinline|c|) dan sebuah bilangan bulat $T$ $(0 \leq T \leq 10^6)$ dipisah spasi.
+
+\subsection*{Format Keluaran}
+$Q$ baris yang berisi sebuah bilangan yang menyatakan banyaknya tripel bilangan bulat nonnegatif $\left(D, E, F\right)$.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+1 1 1
+4
+a 0
+b 1
+c 1
+a 2
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+1
+2
+2
+4
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\pagebreak
+\subsection*{Penjelasan}
+Penjelasannya adalah sebagai berikut:
+\begin{itemize}
+
+\item Setelah query pertama diperoleh $(A_1, B_1, C_1) = (1,1,1)$. Maka tripel $(D, E, F)$ yang memenuhi hanyalah $(0,0,0)$ yakni dapat diambil $R=0.5$, karena memenuhi $0<0.5<1$.
+
+\item Setelah query kedua diperoleh $(A_2, B_2, C_2) = (1,2,1)$. Maka tripel $(D, E, F)$ yang memenuhi ialah $(0,0,0)$ dan $(0,1,0)$ yakni berturut-turut dapat diambil $R=0.2$ dan $R=0.8$.
+
+\item Setelah query ketiga diperoleh $(A_3, B_3, C_3) = (1,2,2)$. Maka tripel $(D, E, F)$ yang memenuhi ialah $(0,0,0)$ dan $(0,1,1)$ yakni berturut-turut dapat diambil $R=0.2$ dan $R=0.8$.
+
+\item Setelah query keempat diperoleh $(A_4, B_4, C_4) = (3,2,2)$. Maka tripel $(D, E, F)$ yang memenuhi ialah $(0,0,0)$, $(1,0,0)$, $(1,1,1)$ dan $(2,1,1)$ yakni berturut-turut dapat diambil $R=0.2$, $R=0.4$, $R=0.6$, dan $R=0.8$.
+
+\end{itemize}
+
+
+\end{document}

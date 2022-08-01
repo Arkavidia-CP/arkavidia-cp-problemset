@@ -1,0 +1,107 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Penyisihan Competitive Programming - Arkavidia 7.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{C - Cokelat dan Permen} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Terdapat $N$ anak-anak yang memiliki cokelat dan permen. Setiap anak memiliki $A$ cokelat dan $B$ permen, anak ke-$i$ memiliki $A_i$ cokelat dan $B_i$ permen. Anda ingin memberikan beberapa cokelat dan permen kepada $N$ anak-anak tersebut sedemikian sehingga:
+
+\begin{itemize}
+\item Nilai dari $A + B$ sama untuk setiap anak, artinya semua anak memiliki jumlah total cokelat dan permen yang sama.
+\item Untuk setiap $i, j$ $(1 \leq i, j \leq N, i \neq j)$ maka $A_i \neq A_j$ dan $B_i \neq B_j$, artinya untuk setiap dua anak berbeda maka jumlah permennya berbeda dan jumlah cokelatnya berbeda satu sama lain.
+\end{itemize}
+
+Berapakah total coklat dan permen minimal yang perlu disiapkan untuk memenuhi hal tersebut?
+ 	
+\subsection*{Format Masukan}
+
+Baris pertama berisi bilangan bulat $N$ $(1 \leq N \leq 10^5)$, menyatakan banyaknya anak.
+
+Baris kedua berisi $N$ bilangan bulat $A_i$ $(1 \leq A_i \leq 10^{9})$, menyatakan banyaknya cokelat yang dimiliki anak ke-$i$ $(1 \leq i \leq N)$.
+
+Baris ketiga berisi $N$ bilangan bulat $B_i$ $(1 \leq B_i \leq 10^{9})$, menyatakan banyaknya permen yang dimiliki anak ke-$i$ $(1 \leq i \leq N)$.
+
+\subsection*{Format Keluaran}
+
+Satu bilangan bulat berupa jawaban dari pertanyaan soal.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+4
+6 2 2 3
+5 5 8 6
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+7
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+
+Dengan total 7 cokelat dan permen, atau lebih tepatnya 5 cokelat dan 2 permen, maka kita bisa memberikan cokelat dan permen sebagai berikut:
+\begin{enumerate}
+\item Anak pertama tidak perlu diberikan cokelat dan permen, sehingga $A_1=6$ dan $B_1=5$.
+\item Anak kedua dapat diberikan 2 cokelat dan 2 permen, sehingga $A_2=4$ dan $B_2=7$.
+\item Anak ketiga dapat diberikan 1 cokelat, sehingga $A_3=3$ dan $B_3=8$.
+\item Anak keempat dapat diberikan 2 cokelat, sehingga $A_4=5$ dan $B_4=6$.
+\end{enumerate}
+
+
+\pagebreak
+
+\end{document}

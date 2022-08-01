@@ -1,0 +1,116 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Final Competitive Programming - Arkavidia 7.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{B - Bonfire Lit} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 2s \\    % jangan lupa ganti time limit
+        Batas Memori & 128MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Kazuma sedang bermain Dank Souls 2D. Dunia pada game ini berukuran $10^9 \times 10^9$. Di dunia Dank Souls 2D, terdapat $N$ buah bonfire (api unggun). Ketika berada pada suatu bonfire, Kazuma dapat melakukan teleportasi ke bonfire lain tanpa menggunakan stamina.
+\begin{center}
+\includegraphics[scale=0.12]{bonfire.png}
+\end{center}
+Kazuma dapat melakukan salah satu dari kedua langkah berikut dengan menggunakan 1 buah unit stamina:
+\begin{itemize}
+    \item Jalan ke kanan, yakni dari $(X, Y)$ ke $(X + 1, Y)$
+    \item Jalan ke atas, yakni dari $(X, Y)$ ke $(X, Y + 1)$
+\end{itemize}
+Pada awalnya, Kazuma berada pada bonfire pertama. Terdapat $Q$ buah koordinat musuh, jika Kazuma ingin membunuh musuh tersebut, Kazuma harus berjalan ke musuh tersebut, namun Kazuma tidak akan mencoba membunuh musuh yang tidak bisa dia capai. Bantulah Kazuma untuk mencari stamina minimum yang diperlukan untuk membunuh setiap musuh. Setelah membunuh musuh, Kazuma harus kembali ke bonfire pertama.
+
+\subsection*{Format Masukan}
+
+Baris pertama berisi sebuah bilangan bulat $N$ $(1 \leq N \leq 10^5)$, menyatakan banyaknya koordinat bonfire.
+
+$N$ baris berikutnya berisi dua bilangan bulat $X_i, Y_i$ $(1 \leq X_i, Y_i \leq 10^9)$ untuk setiap $i$ $(1 \leq i \leq N)$, menyatakan koordinat bonfire ke-$i$.
+
+Baris selanjutnya berisi sebuah bilangan bulat $Q$ $(1 \leq Q \leq 10^5)$, menyatakan banyaknya query.
+
+$Q$ baris berikutnya berisi dua bilangan bulat $X_i, Y_i$ $(1 \leq X_i, Y_i \leq 10^9)$ untuk setiap $i$ $(1 \leq i \leq Q)$, menyatakan koordinat musuh ke-$i$.
+
+\subsection*{Format Keluaran}
+Untuk setiap query, keluarkan sebuah bilangan berupa minimal stamina yang diperlukan untuk membunuh musuh. Jika Kazuma tidak dapat membunuh musuh, keluarkan '\lstinline|-1|' (tanpa tanda petik).
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+4
+1 2
+2 2
+3 2
+2 4
+3
+3 3
+4 4
+1 1
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+1
+2
+-1
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Penjelasannya adalah sebagai berikut:
+\begin{itemize}
+    \item Pada test case pertama, Kazuma dapat melakukan teleportasi ke bonfire ke-3, lalu bergerak 1 kali ke atas.
+    \item Pada test case kedua, Kazuma dapat melakukan teleportasi ke bonfire ke-4, lalu bergerak 2 kali ke kanan.
+    \item Pada test case ketiga, Kazuma tidak dapat membunuh musuh tersebut.
+\end{itemize}
+
+\pagebreak
+
+\end{document}

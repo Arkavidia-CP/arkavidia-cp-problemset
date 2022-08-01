@@ -1,0 +1,19 @@
+\section*{Problem C - Cokelat dan Permen}
+\addcontentsline{toc}{section}{Problem C - Cokelat dan Permen}
+\textit{Author: Bimo Adityarahman Wiraputra}
+\\
+\textit{Expected Difficulty: Medium}
+
+Observasi yang dapat kita temukan adalah bahwa jika syarat dapat dipenuhi dengan $X$ buah coklat dan permen untuk setiap anak, maka syarat juga dapat dipenuhi dengan $X+1$ buah cokelat dan permen untuk setiap anak.
+
+Oleh karena itu, kita dapat melakukan \textit{binary search} terhadap nilai $X$.
+
+Jika kita memiliki nilai $X$, maka kita dapat memeriksa apakah syarat tersebut terpenuhi atau tidak. Pertama, urutkan pasangan $(A_i, B_i)$ berdasarkan nilai $B_i$ secara menurun. Bila nilai $B_i$ sama, maka urutkan berdasarkan nilai $A_i$ secara ascending. Lalu, iterasikan setiap pasangan dan buatlah array $A$ selalu menaik secara \textit{greedy}. Cara ini dijamin optimal karena nilai pada array $B$ sudah bersifat non-ascending.
+
+Kode Solusi: \url{https://ideone.com/ZbS2Po}
+
+Kompleksitas Waktu: $O(N\log{A_{\max} + B_{\max}})$
+
+Catatan Panitia: 
+
+Setelah rejudge, kita hanya menambah 1 buah kasus uji, yaitu kasus dimana semua nilai array $A$ dan $B$ sama.

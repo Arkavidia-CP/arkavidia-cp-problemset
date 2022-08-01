@@ -1,0 +1,100 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Penyisihan Competitive Programming - Arkavidia VII}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Hasan dan Manik-Manik} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 4s \\    % jangan lupa ganti time limit
+        Batas Memori & 512MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Hasan mempunyai manik-manik yang disusun menjadi bentuk segitiga sama sisi dengan ketinggian $N$. 
+Segitiga tersebut memiliki $1$ manik-manik di baris pertama, $2$ manik-manik di baris kedua, hingga 
+$N$ manik-manik di baris ke-$N$. Hasan ingin mewarnai manik-manik tersebut dengan $K$ warna yang berbeda. 
+Cara Hasan mewarnai manik-manik tersebut adalah sebagai berikut: 
+\begin{itemize}
+\item Warnai semua manik-manik pada \textit{medial triangle}-nya dengan warna ke-$i$. \textit{Medial triangle} 
+adalah segitiga sama sisi yang titik-titik sudutnya berada di tengah dari setiap sisi segitiga terluar. Segitiga dengan ketinggian genap tidak memiliki \textit{medial triangle}.
+
+\item Pada langkah ke-$i$, pilih sebuah subsegitiga sama sisi dengan ketinggian ganjik pada manik-manik tersebut 
+yang belum diwarnai dan bukan merupakan bagian dari segitiga sama sisi lain yang belum diwarnai. Jika tidak ada, 
+maka proses pewarnaan dihentikan.
+\end{itemize}
+Proses pewarnaan dilakukan maksimal sebanyak $K$ langkah, atau sebanyak warna yang Hasan miliki. Tidak menggunakan 
+seluruh warna atau tidak mewarnai sama sekali juga terhitung sebagai salah satu cara pewarnaan. Dapatkah kamu 
+menentukan berapa cara pewarnaan berbeda yang dapat dilakukan Hasan?
+
+\subsection*{Format Masukan}
+Masukkan berupa satu baris yang berisi $N$ $(1 \leq N \leq 10^{18})$ dan $K$ $(1 \leq K \leq 10^5)$ dipisah dengan spasi.
+
+\subsection*{Format Keluaran}
+Keluarkan banyak cara perwarnaan yang dapat dilakukan Hasan. 
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+3 2
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+5
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Kelima cara tersebut adalah:
+\begin{enumerate}
+    \item Tidak mewarnai sama sekali
+    \item Mewarnai \textit{medial triangle} dengan warna pertama
+    \item Mewarnai \textit{medial triangle} dengan warna pertama dan subsegitiga dengan tinggi $1$ di atas \textit{medial triangle} dengan warna kedua
+    \item Mewarnai \textit{medial triangle} dengan warna pertama dan subsegitiga dengan tinggi $1$ di kiri \textit{medial triangle} dengan warna kedua
+    \item Mewarnai \textit{medial triangle} dengan warna pertama dan subsegitiga dengan tinggi $1$ di kanan \textit{medial triangle} dengan warna kedua
+\end{enumerate}
+\pagebreak
+
+\end{document}

@@ -1,0 +1,93 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Penyisihan Competitive Programming - Arkavidia VII}
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Minimum King Distance 2} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Nonki mendapat tantangan dari Locel! Locel memberikan Nonki sebuah papan catur berukuran $M \times M$, dua buah array \textit{one-indexed} berukuran $N$, sebut saja array $R$ dan $C$, dan sebuah \textit{piece} \textbf{raja}. Lalu, Locel meminta Nonki melakukan hal berikut:
+
+\begin{enumerate}
+\item \textit{Rearrange} (menyusun ulang) array $C$ sesuka hati.
+\item Pilih dua buah integer berbeda $i$ dan $j$ dalam \textit{range} $[1..N]$.
+\item Letakkan piece raja pada sel $(R_i,C_i)$, lalu jalankan ke sel $(R_j,C_j)$ dengan aturan gerakan raja. Jalur yang dilalui piece raja bebas. Sel $(R_i,C_i)$ dan $(R_j,C_j)$ boleh sama.
+\end{enumerate}
+
+Misalkan banyak langkah yang dilakukan \textit{piece} raja adalah $D$. Locel menantang Nonki untuk mendapatkan nilai $D$ sekecil mungkin. Carilah nilai $D$ \textbf{terkecil} yang bisa didapatkan Nonki!
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari dua buah integer $M$ $(1 \leq M \leq 10^{15})$ dan $N$ $(1 \leq N \leq 10^5)$, masing-masing menyatakan ukuran sisi papan catur dan panjang array. 
+
+Baris kedua terdiri dari $N$ buah integer $R_1,R_2,...,R_N$ $(1 \leq R_i \leq M)$ yang menyatakan elemen array $R$.
+
+Baris ketiga terdiri dari $N$ buah integer $C_1,C_2,...,C_N$ $(1 \leq C_i \leq M)$ yang menyatakan elemen array $C$.
+
+\subsection*{Format Keluaran}
+Keluaran berupa integer $D_{min}$, yang menyatakan banyak langkah minimum yang dapat dilakukan \textit{piece} raja.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+10 5
+9 1 6 7 2
+4 10 4 8 3
+
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+1
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Nonki dapat menyusun ulang array $C$ menjadi $[8, 10, 4, 4, 3]$.
+\\\\
+Lalu, Nonki dapat memilih $i=3$ dan $j=4$, meletakkan \textit{piece} raja pada sel (6,4), dan menjalankan \textit{piece} raja ke sel (7,4) dalam 1 langkah.
+
+\end{document}

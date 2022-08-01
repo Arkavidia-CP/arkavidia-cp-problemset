@@ -1,0 +1,19 @@
+\section*{Problem B - Buku Raja}
+\addcontentsline{toc}{section}{Problem B - Buku Raja}
+\textit{Author: Muhammad Hasan}
+\\
+\textit{Expected Difficulty: Medium}
+
+Kita dapat menyelesaikan soal ini dengan \textbf{Fenwick Tree/BIT}, anggap saja terdapat $M + N$ buah posisi kosong, awalnya kita taruh setiap buku di posisi $M + 1, M + 2, \dots, M + N$ dan melakukan \lstinline|add| untuk setiap posisi tersebut. Kemudian, untuk setiap query ke-$i$, kita cari buku nomor $X$ dan kita taruh buku tersebut di posisi $M - i + 1$. Total waktu yang dibutuhkan bisa dicari dengan melakukan \lstinline|query(posisi X)|, untuk lebih jelasnya dapat dilihat pada kode solusi.
+
+Kode solusi: \url{https://ideone.com/iCHw7I}
+
+Kompleksitas Waktu: $O(M \log(M+N))$
+
+Catatan Panitia:
+
+\begin{itemize}
+    \item Soal ini terinspirasi dari soal \url{https://codeforces.com/contest/665/problem/B}, yang kemudian dimodifikasi.
+    \item Bisa digunakan \lstinline|C++ STL PBDS| (Policy Based Data Structures) juga dalam menyelesaikan soal ini.
+    \item Nama raja terinspirasi dari nama Perpustakaan Besar Alexandra di Mesir.
+\end{itemize}

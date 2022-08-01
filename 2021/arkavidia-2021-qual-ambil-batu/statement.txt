@@ -1,0 +1,10 @@
+Diberikan n bilangan asli berbeda antara 1-20. 
+Sebut himpunan ini himpunan A.
+Morgen dan Kinon akan bermain game dengan m buah batu.
+Tiap turn Morgen dan Kinon cuma bisa ambil batu sejumlah bilangan yang ada di himpunan A.
+Morgen jalan duluan, yang gabisa melakukan langkah valid kalah.
+Diberikan q query, tiap query terdapat bilangan m.
+Anda diminta mengoutputkan siapa yg menang untuk setiap query
+0<n<=20
+1<=q<=1e5
+1<=m<=1e18

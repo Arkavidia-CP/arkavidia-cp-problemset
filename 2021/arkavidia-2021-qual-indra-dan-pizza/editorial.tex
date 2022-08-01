@@ -1,0 +1,26 @@
+\section*{Problem I - Indra dan Pizza}
+\addcontentsline{toc}{section}{Problem I - Indra dan Pizza}
+\textit{Author: Ryo Richardo}
+\\
+\textit{Expected Difficulty: Easy-Medium}
+
+Solusi dari permasalahan ini dapat diselesaikan menggunakan \textbf{linked-list}. Pada solusi ini, mula-mula definisikan tipe bentukan linked list yang mengandung \lstinline|array el| untuk menyimpan \lstinline|id| setiap piring pizza, \lstinline|count| untuk menyimpan jumlah piring dalam tumpukan, \lstinline|id| untuk menyimpan urutan tumpukan dari tumpukan pertama, dan \lstinline|next| untuk menyimpan alamat tumpukan selanjutnya.
+
+Kemudian buatlah fungsi dan prosedur yang dapat mengkoordinasikan piring-piring pizza ke dalam tumpukan sesuai permintaan, yaitu fungsi \lstinline|Alokasi| (membentuk tumpukan baru), fungsi \lstinline|Search| (mencari tumpukan dengan \lstinline|id| tertentu), prosedur \lstinline|Insert| (memanggil fungsi \lstinline|Alokasi|, kemudian memasukan tumpukan yang terbentuk sebagai elemen baru linked-list), dan prosedur \lstinline|Enqueue| (memasukan piring dengan \lstinline|id| tertentu ke tumpukan dengan \lstinline|id| tertentu; jika \lstinline|id| tumpukan tidak ditemukan, maka memanggil prosedur \lstinline|Insert|)
+
+Pada program utama, mula-mula masukkan nilai $N$, $M$, dan $Q$ sesuai spesifikasi soal. Kemudian, untuk menerima kondisi tumpukan awal, digunakan prosedur \lstinline|Insert| (tumpukan ke linked-list) dan \lstinline|Enqueue| (piring ke tumpukan). Kemudian, untuk query jenis 1, gunakan \lstinline|Enqueue| untuk memasukkan piring ke tumpukan. Untuk query jenis 2, gunakan fungsi \lstinline|Search| untuk mencari tumpukan dengan index tertentu, yang kemudian dikurangi elemen teratasnya. Untuk query jenis 3, gunakan fungsi \lstinline|Search| untuk mencari kedua \lstinline|id| tumpukan, serta prosedur \lstinline|Enqueue| yang diiterasikan dari tumpukan satu ke tumpukan yang lainnya.
+
+Setelah selesai menjalankan semua query, program menampilkan tumpukan yang memiliki minimal satu buah piring. Caranya adalah dengan mengiterasikan semua elemen pada linked-list, melakukan filter untuk tumpukan dengan 0 piring, kemudian melakukan iterasi untuk setiap piring yang ada pada tumpukan tersebut.
+
+Kita juga dapat menggunakan STL List pada C++ yang dapat dilihat di dokumentasi C++. Gunakan \lstinline|push_back| untuk query jenis 1, \lstinline|pop_back| untuk query jenis 2, dan splice untuk query jenis 3.
+
+Kode Solusi: \url{https://ideone.com/eyWE8o}
+
+Kompleksitas Waktu: $O(N)$
+
+Catatan Panitia:
+
+\begin{itemize}
+    \item Awalnya soal ini diniatkan untuk diselesaikan dengan bruteforce, ternyata bisa digunakan linked list, sehingga soal dimodifikasi lagi
+    \item Saat lomba dilaksanakan kami baru tau STL List pada C++ bisa digunakan untuk menyelesaikan soal ini.
+\end{itemize}

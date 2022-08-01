@@ -1,0 +1,27 @@
+\section*{Problem A - Ambil Batu}
+\addcontentsline{toc}{section}{Problem A - Ambil Batu}
+\textit{Author: Kinantan Arya Bagaspati}
+\\
+\textit{Expected Difficulty: Medium}
+
+Bentuk soal ini cukup klasik karena mirip dengan NIM Game dengan solusi Dynamic Programming.
+Solusi tersebut ialah menyimpan array boolean yang pada index ke-$i$ bernilai true jika orang pertama menang dengan jumlah batu $i$.
+Penghitungan DP tersebut juga cukup mudah, yakni 
+$$DP[i] = \neg(DP[i-A[0]] \vee DP[i-A[1]] \vee \cdots \vee DP[i-A[n-1]])$$
+dengan array $A$ ialah array yang diberikan pada soal.
+
+Namun solusi ini tidak bisa digunakan karena tiap query ditanyakan jumlah batu hingga $10^{18}$.
+Kuncinya ialah bilangan bilangan pada array $A$ tidak ada yang lebih besar dari 20,
+sehingga penghitungan $DP[i]$ hanya bergantung pada 20 suku sebelumnya.
+Karena array DP berisi boolean, maka hanya terdapat $2^{20}$ kemungkinan subarray dengan panjang 20,
+sehingga jika kita menghitung $2^{20} + 20$ nilai pertama dari array DP ini, maka pasti terdapat 2 bilangan berbeda $x<y$ sehingga:
+$$DP[x] = DP[y], DP[x+1] = DP[y+1], \cdots, DP[x+19] = DP[y+19]$$
+Dengan begitu, kedua subarray ini pasti akan men-generate pola DP yang sama setelahnya.
+Solusi jadi hanya perlu mencari kedua subarray panjang 20 yang sama, selisihnya akan menjadi panjang cycle dimana pola berulang,
+sehingga tiap angka di query tinggal dimodulokan saja dengan panjang cycle apabila angka tersebut lebih besar dari $x$.
+
+Kode Solusi: \url{https://ideone.com/NOBpVE}
+
+Kompleksitas Waktu: $O(N \times 2^{A_{\max}})$
+
+Catatan Panitia: Elon Musk dan Melvin Capital merupakan tokoh di drama "The GME Short Squeeze".

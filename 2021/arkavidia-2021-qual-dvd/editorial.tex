@@ -1,0 +1,46 @@
+\section*{Problem D - DVD}
+\addcontentsline{toc}{section}{Problem D - DVD}
+\textit{Author: Kinantan Arya Bagaspati}
+\\
+\textit{Expected Difficulty: Medium}
+
+Alih alih melihat sinar pada soal memantul-mantul pada dinding, cobalah memandang soal sebagai sinar yang lurus,
+serta cerminkanlah persegi panjang pada soal (sebutlah sebagai "box") di setiap sisinya infinitely-many 
+(sehingga dapat divisualkan sebagai grid of boxes).
+Dari hasil cerminan terbentuk 4 jenis box, yakni box awal, horizontal-mirrored-box, vertical-mirrored-box, dan both-mirrored-box.
+Perhatikan bahwa dalam grid of boxes yang kita ciptakan, pola jenis box akan berulang tiap $2 \times 2$ box ($2N \times 2M$).
+Jika kemudian kita bicara dalam bahasa koordinat dimana entry matrix pada pojok kiri atas box awal ialah $(1,1)$
+dan pojok kanan bawah box awal ialah $(N,M)$, maka entry pada koordinat $(x,y)$ akan dicerminkan ke:
+horizontal-mirrored-box: $(x, 2M+1-y)$
+vertical-mirrored-box: $(2N+1-x, y)$
+both-mirrored-box: $(2N+1-x, 2M+1-y)$
+Mengingat pola grid of boxes yang sudah ada, entry ini akan dicerminkan di semua koordinat yang berbentuk:
+$$(i(2N) + (x \vee (2N+1-x)), j(2M) + (y \vee (2M+1-y)))$$ untuk setiap bilangan bulat $i$ dan $j$
+
+Jelas bahwa sinar akan melewati semua koordinat dengan bentuk $(a,a)$, dan akan berhenti (mengenai sudut) bila $a$ habis dibagi $N$ dan $M$,
+yakni saat $a = lcm(N,M)$.
+Mudah dibuktikan pula bahwa setiap entry pada matrix dilewati sinar hanya maksimal sekali saja.
+
+\textit{Bukti.}
+Kita kembali ke sudut pandang sinar memantul-mantul. Sinar dengan arah kiri-bawah dan kanan-atas hanya menyentuh koordinat $(x,y)$
+dengan $x+y$ ganjil, sementara sinar dengan arah kiri-atas dan kanan-bawah hanya menyentuh koordinat $(x,y)$ dengan $x+y$ genap.
+Setelah itu cukup jelas bahwa apabila terdapat entry yang terkena sinar 2 kali, jelas bahwa sinar tersebut telah menyentuh sudut.
+
+Jelas pula bahwa bilangan yang tertera pada koordinat $(a,a)$ ialah:
+
+$$\left(\left \lfloor\frac{a-1}{N}\right\rfloor + \left\lfloor\frac{a-1}{M}\right \rfloor\right) \% 9 + 1$$
+
+Maka soal telah di reduce menjadi mencari bilangan bulat i dan j sehingga fakta berikut berlaku:
+$$i(2N) + (x \vee (2N+1-x)) = j(2M) + (y \vee (2M+1-y)) \leq lcm(n,m)$$
+Untuk itu diperlukan fungsi bernama \textbf{bezout} (sebuah teorema mengenai metode Euclid pada 2 bilangan) yang apabila diinputkan bilangan $2N$ dan $2M$
+akan mengembalikan $p$ dan $q$ sehingga $p(2N) + q(2M) = gcd(2N,2M)$
+Setelah itu akan dicoba 4 kasus, dimana masing-masing kasusnya mengganti value $U$ menjadi $x$ atau $2N+1-x$ dan $V$ menjadi $y$ atau $2M+1-y$. 
+Pada tiap kasus akan dicari nilai $i$ dan $j$ sehingga $i(2N) + (-j)(2M) = V - U$ dengan bantuan bezout.
+
+Akhir kata, semua informasi di atas telah cukup untuk menyelesaikan soal.
+
+Kode Solusi: \url{https://ideone.com/QAERrw}
+
+Kompleksitas Waktu: $O(\log(\max(N, M)))$
+
+Catatan Panitia: Buat yang belum sadar, pola yang dibentuk sinar merupakan pola DVD player screensaver.

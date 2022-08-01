@@ -1,0 +1,5 @@
+---
+name: Subgraph Divisibility
+validation: custom
+limits:
+    memory: 512

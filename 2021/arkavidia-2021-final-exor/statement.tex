@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Final Competitive Programming - Arkavidia 7.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{E - ExOR} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 512MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Arvy memiliki sebuah array sepanjang $N$ yang terdiri dari bilangan bulat positif. Lalu, dia menuliskan \textit{pairwise} XOR dari masing-masing elemen array tersebut di dalam sebuah tabel A berukuran $N \times N$.
+
+Vidia, temannya yang usil lalu menghilangkan beberapa elemen dari tabel tersebut. Untungnya, Arvy masih ingat bahwa array yang ia buat adalah array paling kecil yang mungkin secara leksikografis.
+
+Bantulah Arvy untuk mengembalikan array tersebut, atau beritahu Arvy bahwa array tersebut tidak mungkin ada.
+
+\subsection*{Format Masukan}
+Baris pertama berisi sebuah bilangan bulat $N$ $(1 \leq N \leq 500)$, yang menyatakan panjang array.
+
+Baris selanjutnya berisi sebuah matriks berukuran $N \times N$, berisi bilangan bulat $A_{ij}$ $(1 \leq A_{ij} \leq 10^{18})$ untuk setiap $i$ dan $j$ $(1 \leq i, j \leq N)$, dengan elemen yang hilang ditandai dengan bilangan $-1$. 
+
+\subsection*{Format Keluaran}
+Jika array tersebut ada, pada baris pertama keluaran berupa string \lstinline|"YES"| (tanpa tanda petik) dilanjutkan dengan array tersebut pada baris berikutnya.
+
+Jika array tersebut tidak ada, keluaran berupa string \lstinline|"NO"| (tanpa tanda petik). 
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+4
+0 6 -1 -1
+-1 0 -1 5  
+11 -1 0 -1 
+-1 -1 8 0
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+YES
+0 6 11 3
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+3
+0 2 0
+2 0 -1
+0 1 0
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+NO
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\pagebreak
+
+\end{document}
