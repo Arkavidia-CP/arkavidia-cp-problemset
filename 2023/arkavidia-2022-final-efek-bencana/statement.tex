@@ -1,0 +1,105 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{E. Efek Bencana} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 2s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Sebuah bencana telah menyerang Provinsi Arvikadia. Hujan lebat telah melanda provinsi tersebut selama satu minggu lebih tanpa berhenti. Untuk menemukan solusi dari masalah ini, sebuah organisasi bernama Adventurer Guild berniat untuk mengadakan pertemuan akbar yang akan diikuti anggotanya pada suatu kota.
+
+Di Provinsi Arvikadia terdapat $M$ kota yang terhubung antar satu sama lain melalui jalan antar kota. Kota-kota di Provinsi Arvikadia dinomori mulai dari 1 hingga M.
+Karena dilanda hujan lebat, jalan tersebut berubah menjadi sungai deras. Berdasarkan observasi dari Adventurer Guild, sungai-sungai yang mengalir ini {\bf pasti membentuk struktur \textit{tree}}. Arus sungai yang terbentuk pada jalan membuat transportasi dari satu kota ke kota lain hanya dapat dilakukan secara satu arah dengan menaiki perahu mengikuti arah sungai.
+Karena keterbatasan ini, ada kemungkinan tidak semua anggotanya dapat berkumpul pada kota yang akan dipilih sebagai tempat diadakannya pertemuan akbar. Oleh karena itu, Adventurer Guild akan memprioritaskan orang yang akan diundang berdasarkan nilai prestasinya. Pada saat itu, terdapat $N$ anggota Adventurer Guild yang masing-masingnya memiliki nilai prestasi $A_i$ dan berada di kota $B_i$($1 \leq i \leq N$). 
+
+Agar pertemuan berjalan maksimal dan dapat memberikan solusi yang berbobot, Arvy yang bekerja sebagai sekretaris Adventurer Guild diminta untuk menentukan kota tempat pertemuan akbar yang akan memberikan nilai total prestasi peserta terbesar. Seluruh anggota akan datang untuk mengikuti pertemuan akbar di kota yang dipilih kecuali anggota yang berhalangan hadir disebabkan tidak dapat melakukan perjalanan ke tempat pertemuan akbar berlangsung. Tentukanlah kota yang paling strategis untuk dijadikan sebagai tempat pertemuan akbar.
+
+(Note: Sungai-sungai yang terbentuk mungkin tidak mengikuti hukum kekekalan massa karena \textit{Arvikadia has its own laws}.)
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari dua bilangan bulat $N$ dan $M$ ($1 \leq N,M \leq 3 \times 10^5$), yang berturut-turut menyatakan banyaknya anggota Adventurer Guild dan banyaknya kota di Provinsi Arvikadia.
+
+Baris kedua terdiri dari $N$ bilangan $A_i$ ($1 \leq A_i \leq 10^9, 1 \leq i \leq N$), yang menyatakan nilai prestasi dari anggota ke-$i$.
+
+Baris ketiga terdiri dari $N$ bilangan $B_i$ ($1 \leq B_i \leq M, 1 \leq i \leq N$), yang menyatakan anggota ke-$i$ pada saat ini berdiam diri di kota $B_i$.
+
+$M-1$ baris berikutnya terdiri dari dua bilangan, $u$ dan $v$ ($1 \leq u,v \leq M, u \neq v$) yang menyatakan adanya sungai yang mengalir dari kota $u$ ke kota $v$.
+
+\subsection*{Format Keluaran}
+Keluaran terdiri atas 2 baris. Baris pertama berupa sebuah bilangan $K$ yang menyatakan banyaknya kota yang mungkin. Sedangkan baris kedua $C_1,C_2,..,C_K$ berupa list nomor kota yang akan memberikan nilai total prestasi maksimal dari seluruh anggota yang dapat mengikuti pertemuan akbar di kota tersebut terurut dari nomor kota terkecil.
+
+\pagebreak
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+5 5
+4 2 1 5 3
+1 1 5 3 4
+1 5
+3 5
+2 4
+4 3
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+1
+5
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada contoh masukan, kota 5 akan memberikan nilai total prestasi terbesar yaitu 15, di mana untuk kasus ini seluruh anggota dapat mengikuti pertemuan akbar karena terdapat jalan dari kota manapun ke kota 5. Dapat dibuktikan pula tidak ada kota lain yang dapat memberikan nilai total prestasi lebih besar dari 15 sehingga banyak kota yang mungkin hanya 1 dan itu adalah kota 5.
+
+\end{document}

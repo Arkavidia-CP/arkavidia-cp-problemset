@@ -1,0 +1,126 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{F. Festival Permen} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 2s \\    % jangan lupa ganti time limit
+        Batas Memori & 512MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Sebuah pabrik permen akan mengadakan Festival Permen selama $N$ hari ke depan. Pada hari ke-$i$ akan dijual bingkisan permen berisi $P_i$ permen dengan harga $C_i$. Namun karena keterbatasan stok permen, pabrik permen tersebut memberikan aturan sebagai berikut:
+
+\begin{enumerate}
+    \setlength\itemsep{0pt}
+    \item Setiap orang hanya bisa membeli bingkisan permen \textbf{maksimal sekali dalam satu hari}.
+    \item Jika selama $K$ hari ke belakang seseorang sudah membeli $b$ bingkisan permen (dengan $b > 0$), maka harga pembelian permen di hari tersebut dikalikan dengan $b$. Namun jika selama $K$ hari kebelakang ia tidak membeli bingkisan permen, maka harga pembelian permen di hari tersebut tetap.
+\end{enumerate}
+
+Pak Arvy sangat menyukai permen.Karena Pak Arvy sangat menyukai permen, Pak Arvy akan mengumpulkan sebanyak-banyaknya permen yang bisa dia dapat. Namun, Pak Arvy hanya memiliki uang sebanyak $U$.
+Mari bantu Pak Arvy menentukan jumlah permen terbanyak yang bisa ia dapatkan!
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari tiga bilangan bulat positif $N$ ($1 \leq N \leq 1000$), $U$ ($1 \leq U \leq 1000$), dan $K$ ($1 \leq K \leq 5$), menyatakan jumlah hari, jumlah uang Pak Arvy, dan jumlah hari yang akan dicek untuk aturan kedua.
+
+$N$ baris berikutnya terdiri dari dua bilangan bulat positif, dengan baris ke-$i$ menyatakan bilangan $P_i$ ($1 \leq P_i \leq 10^9$) dan $C_i$ ($1 \leq C_i \leq 100$), menyatakan banyak permen dalam bingkisan dan harga bingkisan pada hari ke-$i$.
+
+\subsection*{Format Keluaran}
+Keluarkan satu baris terdiri dari satu bilangan bulat X, menyatakan jumlah permen terbanyak yang bisa didapatkan Pak Arvy.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+5 50 2
+1 100
+2 30
+1 20
+3 30
+7 20
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+10
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+10 50 5
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+33
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada contoh masukan pertama, Pak Arvy akan membeli bingkisan permen pada hari ke-4 dan ke-5. Pada hari ke-4, Pak Arvy membeli bingkisan permen berisi 3 permen. Pada hari ke-5, Pak Arvy membeli bingkisan permen berisi 7 permen. Jadi, Pak Arvy akan mendapatkan 10 permen. Jumlah uang yang harus dikeluarkan Pak Arvy adalah $30 + 20 \times 1 = 50$.
+
+\pagebreak
+
+\end{document}

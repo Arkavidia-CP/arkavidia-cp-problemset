@@ -1,0 +1,127 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{J. J-cantik} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 2s \\    % jangan lupa ganti time limit
+        Batas Memori & 512MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Pada suatu hari, Arka sedang berjalan-jalan di sekolahnya sembari menunggu jadwal kelasnya. Ia lalu menemukan sebuah barisan $A$ yang berisi $N$ bilangan asli. Karena sedang bosan, Arka memutuskan untuk bermain-main dengan barisan bilangan tersebut. Arka ingin menghubungkan barisan tersebut dengan bilangan favoritnya, yaitu $J$. 
+
+Setelah berpikir cukup lama, Arka akhirnya memutuskan untuk mencari banyaknya \textit{pair} J-cantik yang ada pada barisan $A$. Sebuah \textit{pair} $(k,l)$ disebut \textit{pair} \textbf{J-cantik} jika banyaknya bilangan prima yang habis membagi $A_k \times$ $A_{k+1}$ $\times \cdots \times A_l$ ($1 \leq$ $k$ $\leq  l$  $\leq  N$) adalah $J$. Arka menyadari bahwa mencari banyaknya \textit{pair} J-cantik bukanlah hal yang mudah, terutama waktu Arka untuk menemukannya sangatlah terbatas karena waktu masuk kelas sudah sebentar lagi. Bantu Arka menemukan banyaknya \textit{pair} J-cantik yang memenuhi.
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari dua buah bilangan bulat $N$ dan $J$ ($1 \leq$ $N$ $\leq 10^5;$ $0 \leq$ $J$ $\leq 10^5$) yang masing-masing menyatakan banyaknya bilangan pada barisan $A$ dan bilangan favorit Arka.
+
+Baris kedua terdiri dari $N$ bilangan asli $A_1$, $A_2$, $A_3$, \cdots, $A_N$ ($1 \leq$ $A_i$ $ \leq 10^5$) yang masing-masing menyatakan bilangan ke-$i$ pada barisan $A$.
+
+\subsection*{Format Keluaran}
+Tuliskan banyaknya \textit{pair} J-cantik berbeda yang memenuhi.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+4 2
+6 2 3 5
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+5
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+5 0
+1 2 1 1 3
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+4
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 3}
+\begin{lstlisting}
+6 1
+2 3 5 4 7 6
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 3}
+\begin{lstlisting}
+5
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada contoh masukan pertama, terdapat 5 \textit{pair} J-cantik yang memenuhi yaitu:
+\begin{itemize}
+    \item $(1,1)$
+    \item $(1,2)$
+    \item $(1,3)$
+    \item $(2,3)$
+    \item $(3,4)$
+\end{itemize}
+
+\end{document}

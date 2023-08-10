@@ -1,0 +1,102 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{I. Isekai no Bouken} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 2s \\    % jangan lupa ganti time limit
+        Batas Memori & 512MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Di suatu siang bolong, Arvy sedang asik bermain video game. Tanpa sadar, tiba-tiba Arvy masuk ke dalam isekai dan tidak bisa log out.
+
+Agar dapat log out dari dalam isekai, Arvy perlu menyelesaikan misi berikut: 
+
+\begin{quote}
+"Kamu sedang berdiri di suatu garis dengan titik awal 0 dan tujuanmu berada di titik akhir $K$. Di antara kedua titik tersebut, terdapat $N$ portal teleportasi dimana setiap portal teleportasi ke-$i$ terletak padatitik $A_i$. Terdapat 2 cara kamu dapat berpindah:
+\begin{enumerate}
+    \setlength\itemsep{0pt}
+    \item Berjalan, membutuhkan waktu 1 detik dan berpindah dari titik $P$ menuju titik $P+1$.
+    \item Teleportasi, membutuhkan waktu $X$ detik dan berpindah dari posisi portal teleportasi ke-$i$ menuju posisi portal teleportasi ke-$(i+L)$ atau posisi portal teleportasi ke-$N$ jika $(i+L)$ $\ge$ $N$.
+\end{enumerate}
+Waktu yang diberikan untuk menyelesaikan misi adalah $Y$ detik dan Anda dapat menggunakan teleportasi maksimal sebanyak $Z$ kali. 
+
+Selamat berpetualang!!!"
+\end{quote}
+
+Tentukan jumlah minimum portal teleportasi yang harus Arvy gunakan agar dapat menyelesaikan misi tanpa melewati batas waktu! Atau keluarkan $-1$ jika tidak mungkin dapat menyelesaikan misi!"
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari 6 bilangan bulat $N$ ($1 \leq N \leq 100.000$), $K$ ($1 \leq K \leq 10^9$), $L$ ($1 \leq L \leq 10^5$), $X$ ($1 \leq X \leq 10^9$), $Y$ ($1 \leq Y \leq 10^9$), dan Z ($1 \leq Z \leq 300$).
+
+Baris kedua terdiri atas $N$ bilangan bulat $A_i$, menyatakan posisi portal teleportasi ke-$i$ terurut membesar ($0$ $<$ $A_1$ $<$ $A_2$ $<$ ... $<$ $A_N$ $\leq$ $K$).
+
+\subsection*{Format Keluaran}
+Keluarkan jumlah minimum portal teleportasi yang harus digunakan, atau jika tidak mungkin keluarkan $-1$.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+6 100 2 5 50 6
+5 14 40 60 61 90
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+2
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+ \subsection*{Penjelasan}
+Pada contoh testcase, dapat digunakan portal 2 dan 4 sehingga total waktu yang dibutuhkan menjadi $14+5+5+10=34$. Jika hanya digunakan satu teleportasi misi tidak mungkin bisa diselesaikan dalam waktu tidak lebih dari 50 detik
+
+\end{document}

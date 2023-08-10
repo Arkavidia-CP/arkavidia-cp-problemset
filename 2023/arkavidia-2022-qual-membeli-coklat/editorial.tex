@@ -1,0 +1,13 @@
+\section*{Problem M - Membeli Coklat}
+\addcontentsline{toc}{section}{Problem M - Membeli Coklat}
+\\
+\textit{Author: Dewana Gustavus Haraka Otang}
+\\
+\textit{Expected Difficulty: Easy}
+\\
+
+Perhatikan bahwa kita hanya bisa untuk berjalan ke atas ke arah root. Untuk mencari harga minimum pada sebuah node kita dapat menggunakan teknik Dynamic Programming sehingga harga[node] = min(harga[node], harga[parent[node]]). Untuk melakukan pencarian dengan efektif kita dapat melakukan traversal dengan DFS dimulai dari root dan mengupdate setiap nilai node yang kita kunjungi.\\
+\\
+Kode Solusi : https://ideone.com/BhYRqr
+\\
+Kompleksitas Waktu : $O(N)$

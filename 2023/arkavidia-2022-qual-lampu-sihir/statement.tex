@@ -1,0 +1,108 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{L. Lampu Sihir} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Di Desa Arkavidia, hiduplah seorang penyihir yang tidak berbakat menyihir bernama Vidia. Vidia memiliki lampu sihir yang selalu menunjukkan satu buah bilangan bulat positif yang hanya dapat diubah oleh Vidia dengan mantranya. Karena Vidia tidak berbakat menyihir, Vidia hanya punya dua mantra, yaitu mantra yang mengubah bilangan $X$ pada lampu sihirnya menjadi $\lfloor X/2 \rfloor$ dan mantra yang mengubah bilangan $X$ pada lampu sihirnya menjadi $X+1$. Setiap mantra membutuhkan $1$ kekuatan sihir.
+
+Konon katanya, lampu sihir tersebut dapat mengabulkan permintaan penduduk desa pada Hari Festival Arkavidia. Pada hari tersebut, lampu sihir Vidia menunjukkan bilangan $K$. $N$ penduduk desa meminta Vidia untuk mengabulkan permintaan mereka. Untuk mengabulkan permintaan mereka, Vidia menyatakan setiap permintaan mereka dengan suatu bilangan bulat positif. Sebuah permintaan ke-$i$ dapat dikabulkan jika lampu sihir tersebut menunjukkan suatu bilangan $W_i$, dengan $W_i$ merupakan representasi bilangan permintaan ke-$i$.
+
+Karena Vidia memiliki kekuatan yang terbatas, Vidia hanya dapat mengabulkan satu permintaan yang membutuhkan kekuatan sihir paling sedikit. Tentukan berapa kekuatan sihir minimal yang dibutuhkan Vidia untuk mengabulkan salah satu permintaan mereka.
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari dua buah bilangan $N$ dan $K (1 \leq N \leq 10^6, 1\leq K \leq 10^{18})$ yang berturut-turut menyatakan banyaknya permintaan dan bilangan yang ditunjukkan lampu sihir Vidia tepat sebelum Hari Festival Arkavidia.
+
+Baris kedua terdiri dari $N$ buah bilangan $W_1, W_2, ..., W_N (1 \leq W_i \leq 10^{18})$ dengan $W_i$ menyatakan representasi bilangan permintaan ke-$i$
+
+\subsection*{Format Keluaran}
+Satu buah bilangan yang menyatakan kekuatan sihir minimal yang dibutuhkan Vidia untuk mengabulkan salah satu permintaan.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+4 10
+9 6 16 3
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+2
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+3 1000000000
+2000000000 3000000000 4000000000
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+1000000000
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada testcase pertama, Vidia dapat menggunakan 1 kali mantra pertama, lalu 1 kali mantra kedua, sehingga bilangan yang ditunjukkan lampu sihir ialah 6. Mudah dibuktikan bahwa ini merupakan opsi paling optimal pada testcase ini.
+
+Pada testcase kedua, Vidia dapat menggunakan 1000000000 kali mantra kedua untuk mengubah 1000000000 menjadi 2000000000.
+
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{C. Change String} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Arka dan Vidia adalah teman baik yang sering bermain gim. Hari ini, mereka berdua ingin bermain gim yang bernama \textbf{Change String}. Permainan ini terdiri dari sebuah string yang tiap karakternya ialah huruf A atau huruf B. Dalam satu giliran, pemain harus memilih suatu substring yang diawali huruf A pada string tersebut dan mengubah tiap huruf pada substring tersebut menjadi huruf lain (huruf A harus diubah menjadi huruf B dan huruf B harus diubah menjadi huruf A). Pemain yang tak bisa melakukan langkah dianggap kalah. 
+
+Selain sering bermain gim, Arka dan Vidia merupakan orang yang sangat jenius dalam bermain gim. Dengan asumsi kedua pemain bermain dengan optimal dan pemain pertama adalah Arka, tentukan pemenang dari permainan ini.
+
+(Note: Substring adalah sekuens kontigu dari karakter-karakter pada string. Misalnya, substring dari string ARKA adalah ARKA, ARK, RKA, AR, RK, KA, A, R, dan K.)
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari sebuah bilangan bulat $N$ ($1 \leq$ N $ \leq 10^6$), menyatakan panjang string yang akan dimainkan.
+
+Baris kedua berisi string yang akan dimainkan.
+
+\subsection*{Format Keluaran}
+Tuliskan pemenang dari permainan tersebut apabila Arka dan Vidia bermain optimal. Keluarkan "Arka" apabila Arka menang, dan keluarkan "Vidia" apabila Vidia menang.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+6
+AAAAAAA
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+Arka
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+3
+ABA
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+Vidia
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+ \subsection*{Penjelasan}
+Pada contoh masukan pertama, Arka dapat mengubah semua karakter pada string tersebut menjadi B, sehingga Vidia tidak dapat melakukan gerakan.
+
+Pada contoh masukan kedua, terdapat empat kemungkinan langkah yang dapat dilakukan Arka.
+\begin{enumerate}
+  \item Arka mengubah ABA menjadi BBA. Vidia dapat menang dengan mengubah substring A menjadi B.
+  \item Arka mengubah ABA menjadi BAA. Vidia dapat menang dengan mengubah substring AA menjadi BB.
+  \item Arka mengubah ABA menjadi BAB. Vidia dapat menang dengan mengubah substring A menjadi B.
+  \item Arka mengubah ABA menjadi ABB. Vidia dapat menang dengan mengubah substring A  menjadi B.
+\end{enumerate}
+Oleh karena itu, bagaimanapun Arka mengubah string, Vidia akan tetap menang.
+
+\end{document}

@@ -1,0 +1,131 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{L. Lindungi Ratu} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Arka adalah orang yang sangat menyukai \textit{puzzle}. Suatu hari, Arka menantang Vidia untuk memainkan suatu permainan \textit{puzzle} yang bernama \textbf{Lindungi Ratu}. Diberikan papan berukuran \textit{N $\times$ M} yang berisi \textbf{*} dan \textbf{-}. Dalam permainan ini, Vidia dapat menukar isi suatu petak dengan isi petak yang ada tepat di atas, kiri, kanan, bawah, atau diagonal dari petak tersebut. Dengan kata lain, apabila Vidia ingin menukar isi petak ($x , y$), maka ia dapat menukarkannya dengan kotak yang berada di ($x+a, y+b$) dimana $-1 \leq a \leq 1$ dan $-1 \leq b \leq 1$.  Untuk memenangkan Lindungi Ratu, Vidia harus melakukan pertukaran sesedikit mungkin sehingga seluruh tepian papan berisi \textbf{*}. 
+
+Karena Vidia tidak terlalu pandai dalam memainkan Lindungi Ratu, Vidia memutuskan untuk memintamu membuat program untuk menentukan jumlah pertukaran minimum yang harus dilakukan agar seluruh tepian papan berisi \textbf{*}. Bantulah Vidia untuk menyelesaikan permainan ini!
+
+\subsection*{Format Masukan}
+Baris pertama terdiri atas dua bilangan bulat positif $N$ dan $M$ ($1 \leq N, M \leq 1.000$) yang masing-masing menyatakan jumlah baris dan kolom papan.
+
+$N$ baris berikutnya terdiri atas $M$ karakter \textbf{*} atau \textbf{-} yang menandakan posisi awal papan. Dapat dipastikan jumlah \textbf{*} yang tidak berada pada tepian papan tidak akan melebihi 400.
+
+\subsection*{Format Keluaran}
+Sebuah baris berisi sebuah bilangan bulat yang menyatakan jumlah penukaran minimum yang dapat dilakukan agar seluruh tepian papan berisi \textbf{*}. Keluarkan $-1$ bila tidak memungkinkan.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+3 3
+***
+*-*
+***
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+0
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+3 3
+---
+-*-
+---
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+-1
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 3}
+\begin{lstlisting}
+4 4
+****
+---*
+*-**
+****
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 3}
+\begin{lstlisting}
+2
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada contoh masukan pertama, seluruh tepian papan sudah berisi \textbf{*} sehingga tidak perlu dilakukan pertukaran.
+
+Pada contoh masukan kedua, jumlah * tidak mencukupi untuk mengisi seluruh tepian papan sehingga keluaran bernilai -1.
+
+Pada contoh masukan ketiga, * yang berada di posisi (2, 2) dapat ditukarkan dengan - yang berada di (1, 1) lalu (1, 0) agar seluruh tepian papan bernilai * sehingga keluaran bernilai 2.
+
+\end{document}

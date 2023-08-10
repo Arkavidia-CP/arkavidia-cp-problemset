@@ -1,0 +1,106 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{H. Hewan Ternak} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Vidia adalah seorang pengembala profesional. Vidia sudah memiliki berbagai pengalaman mengembala berbagai jenis hewan ternak. Kali ini Vidia mendapatkan tugas untuk mengembala dua hewan sekaligus, yaitu domba dan kambing. Tugas ini merupakan tugas yang cukup sulit dikarenakan domba dan kambing dikenal sebagai dua kubu hewan yang tidak pernah akur. Namun, Vidia tidak habis pikir. Supaya domba dan kambing tersebut dapat makan rerumputan dengan tenang tanpa membuat kerusuhan, Vidia memiliki ide untuk membuat dua buah daerah yang dibatasi pagar untuk masing-masing jenis hewan di padang rumput tersebut. 
+
+Sebelum memasang pagarnya, Vidia harus memasang beberapa batang kayu sebagai pondasi dari pagar yang akan dipasang. Beruntung, di daerah tersebut sudah terdapat $N$ lubang bekas pemasangan pondasi dari seorang pengembala-pengembala zaman dahulu. Padang rumput tersebut dapat dianggap sebagai bidang dua dimensi, sedangkan sebuah lubang pondasi ke-$i$ dapat dianggap sebagai sebuah titik dengan koordinat $X_i$ dan $Y_i$. Daerah yang akan dipagari dapat didefinisikan sebagai sebuah daerah tertutup dengan pagar sebagai sisinya dan lubang pondasi sebagai titik sudutnya. Dua buah daerah dapat saling berbagi pagar dan pondasi, namun dua buah pagar tidak boleh saling berpotongan. 
+
+Karena adanya kepercayaan nenek moyang, tidak terdapat tiga buah lubang pondasi yang membentuk Segitiga Bermuda. Di dalam dunia pengembala, Segitiga Bermuda adalah daerah segitiga yang mengurung seluruh lubang pondasi selain lubang-lubang pondasi yang menjadi sudut dari segitiga tersebut. 
+
+Agar pembagian daerah maksimal, Vidia ingin luas daerah yang lebih kecil dibuat sebesar-besarnya agar masing-masing kubu mendapatkan jatah rumput sebanyak-banyaknya. Dengan tujuan yang sama, sebuah daerah tidak boleh berada di dalam daerah lainnya. Bantulah Vidia untuk menemukan luas dari dua daerah yang akan dibuat.
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari satu bilangan bulat positif $N$ ($4 \leq N \leq 5000$), menyatakan banyaknya lubang pondasi.
+
+$N$ baris berikutnya terdiri dari 2 bilangan bulat, dengan baris ke-$i$ menyatakan $X_i$, $Y_i$ ($-10^9 \leq X_i, Y_i \leq 10^9, 1 \leq i \leq N$) yaitu koordinat dari lubang pondasi ke-$i$. Untuk tiap input yang diberikan, dapat dipastikan Vidia dapat membuat dua buah daerah yang berbeda serta tidak ada Segitiga Bermuda yang terbentuk.
+
+\subsection*{Format Keluaran}
+Dua buah bilangan real $A_1$ dan $A_2$ ($A_1 \leq A_2$) yang menyatakan luas dari daerah yang lebih kecil dan daerah yang lebih besar secara berurutan yang memenuhi permintaan Vidia dengan pembulatan tiga angka desimal. 
+
+\pagebreak
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+15
+-4 -1
+-3 1
+-3 3
+-2 2
+-2 -3
+-1 -1
+-1 3
+0 -4
+1 -2
+1 0
+1 2
+1 4
+2 3
+3 1
+4 -1
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+20.500 21.000
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada contoh testcase, pembagian daerah dapat dilakukan dengan memasang pagar dari titik (-4,-1) ke titik (3,1).
+
+\end{document}

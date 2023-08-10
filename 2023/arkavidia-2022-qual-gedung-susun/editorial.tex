@@ -1,0 +1,36 @@
+\section*{Problem G - Gedung Susun}
+\addcontentsline{toc}{section}{Problem G - Gedung Susun}
+\textit{Author: Firizky Ardiansyah}
+\
+\textit{Expected Difficulty: Medium-Hard}
+
+Soal ini dapat diselesaikan menggunakan \textit{dynamic programming}. Misalnya $dp_j[k]$ adalah biaya minimum yang diperlukan Arka untuk memasuki gedung ke-$j$ pada lantai ke-$k$. Berdasarkan deskripsi persoalan, dapat diformulasikan sebagai berikut.
+
+
+\begin{align*} 
+    dp_j[k] = \min_{\max(0, k-d_{j-1}) \leq x \leq \min(M, k+d_{j-1})} (dp_{j-1}[x] + b_j + |k - x| + |k - GF_j|)
+\end{align*}
+
+Untuk memasuki gedung ke-$j$ pada lantai ke-$k$ bisa dilakukan melalui gedung sebelumnya pada lantai yang bisa mencapai lantai ke-$k$ melalui elevator. $b_{j}$ adalah biaya masuk gedung ke-$j$, $|k - x|$ adalah biaya elevator pada gedung sebelumnya, dan $|k - GF_j|$ adalah biaya memasuki lantai $k$ di gedung $j$. Formula di atas dapat ditulis ulang menjadi sebagai berikut.
+
+\begin{align*} 
+    dp_j[k] =  b_j  + |k - GF_j| + \min_{\max(0, k-d_{j-1}) \leq x \leq \min(M, k+d_{j-1})} (dp_{j-1}[x] + |k - x|)
+\end{align*}
+
+Komputasi di atas memerlukan kompleksitas sebesar $O(M)$, sehingga untuk mendapatkan $dp_N$, diperlukan kompleksitas sebesar $O(NM^2)$. Namun, solusi dengan kompleksitas tersebut tidak diterima oleh juri. Terdapat beberapa cara untuk mencapai kompleksitas yang lebih baik, salah satunya adalah menghitung \textit{term} ketiga dari formula menggunakan struktur data seperti \textit{segment tree}. Perhatikan bahwa untuk $l \leq k \leq r$
+
+\begin{align*} 
+    \min_{l \leq x \leq r} (dp_{j-1}[x] + |k - x|) = \min( \min_{l \leq x \leq k} (dp_{j-1}[x] - x) + k, \min_{k \leq x \leq r} (dp_{j-1}[x] + x) - k)
+\end{align*}
+
+Untuk setiap $1 \leq i \leq N$, misalnya $A_{j-1}[i] = dp_{j-1}[i] - i$ dan $B_{j-1}[i] = dp_{j-1}[i] + i$. Pada setiap iterasi $j$, bangun \textit{segment tree} pada $A_{j-1}$ dan $B_{j-1}$ untuk mendapatkan \textit{minimum range query} pada masing-masing \textit{sequence}. Dengan demikian, untuk setiap $k$, dapat dicari $dp_j[k]$ hanya dalam $O(\log M)$, sehingga kompleksitas totalnya adalah $O(NM + NM \log M)$. 
+
+Biaya total minimum yang diperlukan Arka dapat dihitung sebagai 
+$\displaystyle \min_{1 \leq i \leq M} (dp_N[i])$.
+
+Untuk mengatasi masalah \textit{memory limit}, perhatikan bahwa nilai $dp_j$ hanya dipengaruhi oleh $dp_{j-1}$, salah satu cara agar bisa lebih kecil penggunaan memorinya adalah dengan mengalokasikan hanya dua buah \textit{array} $dp$ untuk menyimpan $dp_j$ dan $dp_{j-1}$. Untuk setiap iterasi $j$, timpa \textit{array} yang asalnya adalah $dp_{j-2}$ menjadi $dp_j$.
+
+
+Kode Solusi: \url{https://ideone.com/TkfFVX}
+
+Kompleksitas Waktu: $O(NM + NM \log M)$

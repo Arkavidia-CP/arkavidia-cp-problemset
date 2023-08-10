@@ -1,0 +1,86 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{M. Membuat Tim} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 512MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Terdapat sebuah kelas di sekolah Arkavidia yang terdiri dari $N$ murid. Guru dari kelas tersebut ingin membagi murid - murid di kelasnya menjadi 2 tim yang beranggotakan $N - K$ murid dan $K$ murid. Murid ke-$i$ memiliki tingkat kepintaran $P_i$. Guru tersebut ingin membagi murid-murid tersebut menjadi 2 tim dengan nilai \textit{fairness} seminimal mungkin. Nilai \textit{fairness} didefinisikan sebagai selisih dari jumlah kepintaran murid dari kedua tim itu. Tentukan nilai minimal dari \textit{fairness} yang dapat dicapai oleh guru tersebut.
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari dua bilangan positif $N$ ($2 \leq N \leq 30$) yang menyatakan jumlah murid di kelas dan $K$ ($1 \leq K < N$) yang menyatakan jumlah murid di salah satu kelompok.
+
+Baris kedua terdiri dari $N$ buah bilangan bulat $A_i$ ($ 1 \leq i \leq N$ dan $1 \leq A_i \leq 1000$) yang menyatakan kekuatan murid ke-$i$.
+
+\subsection*{Format Keluaran}
+Keluarkan satu bilangan bulat yang menyatakan nilai minimal dari \textit{fairness} yang dapat dicapai oleh guru tersebut.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+6 3
+4 2 9 8 8 6 
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+1
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada contoh masukan, kelompok $N-K$ terdiri atas murid nomor $2, 3$ dan $4$ dengan jumlah kepintarannya adalah 19. Kelompok $N$ terdiri atas murid nomor $1, 5$ dan $6$ dengan jumlah kepintarannya adalah 18. Nilai \textit{fairness} adalah 1. Dapat dibuktikan bahwa nilai \textit{fairness} tidak bisa lebih kecil dari 1.  
+
+\end{document}

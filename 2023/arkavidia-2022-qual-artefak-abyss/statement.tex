@@ -1,0 +1,151 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{A. Artefak Abyss} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256 MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Seperti para penjelajah lainnya di Kota Arkavidia, Arvy merupakan seseorang yang gemar mengoleksi artefak di Abyss. Artefak merupakan benda berharga yang berada di dalam Abyss yang gelap. Masing-masing artefak memiliki nilai keberhargaan. Layaknya hidup yang bukan seperti cerita fantasi, Arvy harus menjelajah ke dalam Abyss untuk mendapatkan artefak-artefak yang dia inginkan.
+
+Abyss memiliki tiga buah tingkatan, yaitu tingkat pertama, kedua dan ketiga. Secara berurut, masing-masing tingkatan memiliki artefak sebanyak $N$, $M$, dan $K$ buah artefak. Namun, tiap tingkatan memberikan efek kutukan berbeda kepada penjelajah yang mengambil artefak yang dikandungnya. Efek kutukan tersebut adalah sebagai berikut :
+
+\begin{enumerate}
+    \setlength\itemsep{0pt}
+    \item Tingkat pertama, merupakan tingkat yang aman dan tidak memberikan efek apa-apa.
+    \item Tingkat kedua, setelah penjelajah mengambil satu artefak di tingkat ini, total nilai artefak yang dia miliki akan dikurangi $Y$.
+    \item Tingkat ketiga, setelah penjelajah mengambil satu artefak di tingkat ini, total nilai artefak yang dia miliki akan dibagi $Z$.
+\end{enumerate}
+
+Abyss merupakan tempat yang berbahaya dan kutukan yang diberikannya tidak bisa dianggap enteng. Beruntung, Arvy memiliki teman yang sudah ahli dengan kutukan Abyss yaitu Kadia. Untuk membantu Arvy dalam mencari artefak, Kadia membuat sebuah penawar kutukan yang membuat Arvy dapat mengambil sebuah artefak tanpa terkena kutukan Abyss. Tetapi, karena persediaan penawar kutukan yang terbatas Kadia hanya mempersiapkan penawar kutukan sebanyak $P$ satuan.
+
+Dengan bantuan Kadia, Arvy pun memulai perjalanannya untuk mengoleksi artefak-artefak Abyss. Seperti penjelajah lainnya, Arvy ingin mendapatkan artefak-artefak dengan total nilai sebanyak-banyaknya. Tentukan total nilai artefak maksimum yang bisa Arvy dapat dengan melakukan urutan pengambilan artefak tertentu! Perhatikan bahwa kutukan hanya berlaku setelah Arvy mengambil sebuah artefak, sehingga Arvy dapat secara bebas memulai perjalanannya di tingkatan berapapun serta ia juga dapat secara bebas memilih tingkatan yang akan ia kunjungi selanjutnya. Selain itu, Arvy dapat memilih untuk memakai/tidak memakai penawar kutukan sesuka hatinya. 
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari 3 bilangan bulat $N$, $M$, $K$ ($1 \leq N,M,K \leq 10^5$)  dan diikuti 3 bilangan bulat $P$ ($0 \leq P \leq  10^6$), $Y$ ($0 \leq Y \leq 10^9$),$z$ ($1 \leq Z \leq 200$) sesuai deskripsi soal.
+
+Baris kedua terdiri dari $N$ bilangan bulat $A_i$ ($1 \leq i \leq N$) yang menyatakan nilai artefak ke-$i$ di tingkat pertama.
+
+Baris ketiga terdiri dari $M$ bilangan bulat $B_j$ ($1 \leq j \leq M$) yang menyatakan nilai artefak ke-$j$ di tingkat kedua.
+
+Baris keempat terdiri dari $K$ bilangan bulat $C_l$ ($1 \leq l \leq K$) yang menyatakan nilai artefak ke-$l$ di tingkat ketiga. Untuk masing-masing nilai artefak, berlaku ($1 \leq A_i,B_j,C_l \leq 10^9$)
+
+\subsection*{Format Keluaran}
+Satu bilangan bulat positif yang menyatakan nilai maksimum artefak yang bisa Arvy dapatkan.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+3 4 3 0 2 3
+3 4 1
+3 1 2 2
+6 1 4
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+11
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+3 3 3 2 5 3
+3 4 1
+5 2 3
+7 1 3
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+21
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada testcase pertama, salah satu cara pengambilan adalah  : {$C_3 \rightarrow B_3 \rightarrow C_1 \rightarrow A_2 \rightarrow B_1 \rightarrow A_1 \rightarrow A_3$}
+
+mengambil artefak ke-3 di tingkat ketiga : $\frac{0+4}{3} = 1$
+
+mengambil artefak ke-3 di tingkat kedua : $(1+2) - 2 = 1$
+
+mengambil artefak ke-1 di tingkat ketiga : $\frac{1+6}{3} = 2$
+
+mengambil artefak ke-2 di tingkat pertama : $2 + 4 = 6$
+
+mengambil artefak ke-1 di tingkat kedua : $(6+3) - 2 = 7$
+
+mengambil artefak ke-1 di tingkat pertama : $7 + 3 = 10$
+
+mengambil artefak ke-3 di tingkat pertama : $10 + 1 = 11$\newline
+
+Pada testcase kedua, salah satu cara pengambilan adalah : $C_3 \rightarrow B_1 (penawar) \rightarrow A_1 \rightarrow C_1 (penawar) \rightarrow A_3 \rightarrow A_2$
+
+mengambil artefak ke-3 di tingkat ketiga : $\frac{0+3}{3} = 1$
+
+mengambil artefak ke-1 di tingkat kedua menggunakan penawar : $1 + 5 = 6$
+
+mengambil artefak ke-1 di tingkat pertama : $6 + 3 = 9$
+
+mengambil artefak ke-1 di tingkat ketiga menggunakan penawar : $9 + 7 = 16$
+
+mengambil artefak ke-3 di tingkat pertama : $16 + 1 = 17$
+
+mengambil artefak ke-2 di tingkat pertama : $17 + 4 = 21$
+
+\end{document}

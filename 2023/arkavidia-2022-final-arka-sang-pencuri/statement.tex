@@ -1,0 +1,101 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{A. Arka Sang Pencuri} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Arka dan komplotannya ingin melakukan pencurian pada suatu bangunan yang kompleks dan saat ini berada pada ruangan awal bangunan tersebut. Pada awalnya, Arka menemukan bahwa mereka hanya dapat mengakses \textit{N} ruangan karena tingkat keamanan yang tinggi. Namun, setelah berhasil mengakses suatu ruangan, Arka menemukan bahwa dia dapat mengakses \textit{N} ruangan baru lainnya.
+
+Selain itu, Arka juga menemukan bahwa perkiraan nilai harta pada suatu ruangan bernilai kuadrat dari banyak ruangan yang Arka dan komplotannya harus lewati (termasuk ruangan awal) sebelum mencapai ruangan tersebut. Sebagai contoh, nilai harta pada \textit{N} ruangan pertama yang dapat diakses Arka bernilai \textbf{1} karena Arka hanya perlu melewati 1 ruangan untuk mencapainya yaitu ruangan awal. 
+
+Karena alasan tertentu, Arka dan komplotannya memutuskan untuk mencuri semua ruangan yang terdekat terlebih dahulu. Selain itu, karena waktu dan tenaga yang terbatas, Arka dan komplotannya hanya berhasil mencuri hingga \textit{K} kedalaman ruangan. Kedalaman ruangan dimulai dari 1 yaitu ruangan awal. 
+
+Dengan asumsi bahwa Arka berhasil mencuri semua ruangan yang memiliki kedalaman $\leq$ \textit{K}, hitunglah nilai harta yang berhasil dicuri Arka dan komplotannya! 
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari dua bilangan bulat positif $N$ dan $K$ ($1 \leq N, K \leq 10^{18}$), yang masing-masing menyatakan jumlah ruangan yang dapat diakses di awal dan kedalaman ruangan yang berhasil dicuri oleh Arka.
+
+\subsection*{Format Keluaran}
+Keluarkan satu baris terdiri dari satu bilangan bulat yang menyatakan nilai harta yang berhasil dicuri Arka \textbf{modulo} $10^9 + 7$
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+3 3
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+39
+\end{lstlisting}
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+1 10
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+285
+\end{lstlisting}
+\end{multicols}
+
+\subsection*{Penjelasan}
+
+Pada contoh masukan pertama, terdapat 1 ruangan yang bernilai 0 yaitu ruangan awal, 3 ruangan yang bernilai 1 yaitu N ruangan pertama yang dapat diakses, dan 9 ruangan yang bernilai 4 yaitu 9 ruangan yang dapat diakses setelah mencuri 3 ruangan pertama. Maka total nilai harta yang berhasil dicuri Arka adalah $1 \times 0 + 3 \times 1 + 9 \times 4 = 39$
+
+\end{document}

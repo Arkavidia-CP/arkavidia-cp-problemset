@@ -1,0 +1,103 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{K. Khayalan Liburan} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 2s \\    % jangan lupa ganti time limit
+        Batas Memori & 512MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Saat ini Arka sedang sibuk kuliah. Ia sampai mengkhayal untuk melakukan liburan semester di akhir semester nanti. Arka berencana untuk menginap di luar kota selama tepat $K$ hari dan telah menulis $N$ buah kota yang ingin ia kunjungi dengan $A_i$  menyatakan biaya hidup total selama $K$ hari di kota $i$ dan $B_i$  menyatakan waktu (dalam satuan hari) yang harus ditempuh untuk mencapai kota ke-$i$. Karena Arka tidak mempunyai uang, Arka mengandalkan uang yang diberikan orangtuanya. Arka tidak tahu pasti jumlah uang yang akan diberikan oleh orang tuanya.
+
+Meskipun Arka tidak tahu berapa banyak uang yang akan diberikan orang tuanya, Arka tahu $M$ buah kemungkinan uang yang akan diberikan oleh orang tuanya yang dinyatakan sebagai $C_i$ untuk kemungkinan ke-$i$ ($1 \leq i \leq M$). Pada kemungkinan ke-$i$, Arka memutuskan untuk pergi minimal selama $D_i$ ($1 \leq i \leq M$) hari. Arka berencana untuk menginap di kota tersebut selama tepat $K$ hari tetapi karena keterbatasan uang ia harus memilih kota yang harus dikunjungi agar total biaya hidupnya selama ia menginap tidak melebihi total uang yang diberikan orang tuanya. Total waktu selama Arka pergi adalah total waktu menginap ditambah waktu tempuh untuk mencapai kota ke-$i$ ($B_i$) ditambah waktu tempuh dari kota ke-$i$ untuk kembali ke rumah ($B_i$).
+
+Selain itu, karena Arka sedang ada kegiatan magang, ia harus kembali dalam waktu secepat mungkin. Tentukan indeks dari kota yang perlu dikunjungi Arka untuk setiap kemungkinan uang yang diberikan oleh orang tuanya sehingga ia dapat kembali secepat mungkin. Jika terdapat lebih dari 1 jawaban, keluarkan kota dengan indeks terkecil, dan jika tidak ada jawaban, keluarkan $-1$.
+
+\subsection*{Format Masukan}
+Baris pertama terdiri dari tiga bilangan bulat $N$ ($1 \leq N \leq 100.000$) yang menyatakan banyak kota, $M$ ( $1 \leq M \leq 100.000$) yang menyatakan banyak kemungkinan uang yang akan diberikan oleh orangtua Arka dan $K$ ($1 \leq K \leq 10^9$) yang menyatakan total hari Arka akan menginap.
+
+Baris kedua terdiri atas $N$ buah bilangan $A_i$ ($1 \leq i \leq N$ dan $1 \leq A_i \leq 10^9$) yang menyatakan biaya hidup selama $K$ hari di kota ke-$i$
+
+Baris ketiga terdiri atas $N$ buah bilangan $B_i$ ($1 \leq i \leq N$ dan $1 \leq B_i \leq 10^9$) yang menyatakan waktu (dalam satuan hari) yang harus ditempuh untuk mencapai kota ke-$i$.
+
+Baris keempat terdiri atas $M$ buah bilangan $C_i$ ($1 \leq i \leq M$ dan $1 \leq C_i \leq 10^9$) yang menyatakan uang yang akan diberikan oleh orangtua Arka pada kemungkinan ke-$i$.
+
+Baris kelima terdiri atas $M$ buah bilangan $D_i$ ($1 \leq i \leq M$ dan $1 \leq D_i \leq 10^9$) yang menyatakan rencana minimal durasi Arka akan pergi untuk kemungkinan uang ke-$i$.
+
+\subsection*{Format Keluaran}
+Keluaran berupa $X_1,X_2,..,X_M$, dimana $X_i$ adalah indeks dari kota mana yang harus Arka kunjungi jika uang yang diberikan sebesar $C_i$ dan total waktu pergi minimal sebesar $D_i$. Jika terdapat lebih dari 1 jawaban, keluarkan kota dengan indeks terkecil, dan jika tidak ada jawaban, keluarkan $-1$.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+3 2 10
+10 20 30
+4 5 6
+100 1
+2 10
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+1 -1
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada contoh masukan, terdapat 2 kemungkinan uang yang diberikan oleh orangtua Arka.
+
+\begin{enumerate}
+    \item Pada kemungkinan pertama, ia akan memilih kota pertama dan menginap selama $K$ hari. Maka sudah dipastikan bahwa ia sudah berlibur selama $18$ hari (2 * $B_1$ + $K$ = $2*4+10=18$). Jumlah total Arka pergi sudah memenuhi batas waktu pergi minimal $D_1$ ($18\geq2$). Biaya hidupnya adalah $A_1$ = 10 sehingga tidak melebihi $C_1$ ($10\leq100$). Oleh karena itu, Arka akan menginap di kota ke 1. Dalam hal ini, Sebenarnya Arka juga bisa menginap di kota ke 2 dan 3 tetapi waktu total Arka selama pergi ke kota tersebut berturut-turut adalah 20 dan 22 hari sehingga nilainya tidak minimum.
+    \item Pada kemungkinan kedua, Arka tidak dapat memilih kota 1 karena harga penginapannya melebihi $C_2$ ($10>1$). Arka juga tidak dapat memilih kota ke 2 dan 3 karena biaya yang diperlukan melebihi $C_2$.
+\end{enumerate}
+
+\end{document}

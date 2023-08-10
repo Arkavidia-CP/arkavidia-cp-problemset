@@ -1,0 +1,100 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\section*{Problem J - Jelajah Dunia}
+\addcontentsline{toc}{section}{Problem J - Jelajah Dunia}
+\textit{Author: Firizky Ardiansyah}
+\
+\textit{Expected Difficulty: Hard}
+
+Misalnya Vidia berjalan dari portal masuk $A(x_{in},y_{i}n)$ dan ingin keluar menuju portal keluar $B(x_{out},y_{out})$. Sebut dinding sebagai garis $L:y=x+k$. Jika $A$ dan $B$ berada pada sisi yang berbeda dari $L$, jelas banyaknya cara Vidia berjelajah adalah 0 (karena Vidia pasti harus melalui dinding untuk berjelajah dari $A$ dan $B$). Artinya kita hanya perlu meninjau kasus jika $A$ dan $B$ berada pada sisi yang sama dari $L$. Ada beberapa kasus yang perlu diselidiki:
+
+\textbf{Kasus 1}
+Jika $x_{in} > x_{out}$ atau $y_{in} > y_{out}$, tidak ada cara bagi Vidia untuk menjelajahi dunia tersebut (karena Vidia hanya bisa berjalan ke kanan, atau ke atas).
+
+\textbf{Kasus 2}
+Jika $x_{out} \geq x_{in}$ dan $y_{out} \geq y_{in}$. Definisikan \textit{grid perjalanan} adalah sebuah persegi panjang yang memiliki titik sudut $A(x_{in},y_{in} ),P(x_{in},y_{out} ),Q(x_{out},y_{in} ),B(x_{out},y_{out})$. Ada dua kasus untuk dipertimbangkan.
+
+\textbf{Kasus 2.1}
+Jika $L$ tidak memotong \textit{grid perjalanan}, artinya banyaknya cara perjalanan dari $A$ ke $B$ bisa dihitung dengan banyaknya path terpendek dari $A$ ke $B$. Hal ini bisa dengan mudah dihitung dengan formula \textit{shortest rectangular path} sebagai berikut.
+
+\begin{figure}[ht]
+\centering
+    $\begin{pmatrix}
+    y_{out}-y_{in}+x_{out}-x_{in}\\
+    x_{out}-x_{in}
+    \end{pmatrix}$
+\end{figure}
+
+P.S: syarat $L$ memotong grid perjalanan dapat diperiksa salah satunya dengan meninjau apakah $P$ dan $Q$ berada pada sisi yang sama relatif terhadap $L$.
+
+\textbf{Kasus 2.2}
+Jika $L$ memotong grid perjalanan, Misalnya $f_1$ adalah banyaknya \textit{path rectangular} terpendek dari $A$ ke $B$ tanpa restriksi (dapat melewati dinding). Misalnya $f_2$ adalah banyaknya \textit{path rectangular} terpendek dari $A$ ke $B$ yang melewati dinding setidaknya satu kali (menyentuh dinding setidaknya sekali). Banyaknya cara dari $A$ ke $B$ tanpa melewati dinding dengan demikian dapat dihitung dengan
+
+\begin{align*} 
+    f = f_1 - f_2
+\end{align*}
+
+Kita ketahui bahwa $f_1$ dapat dihitung seperti \textbf{Kasus 2.1}, sehingga hanya perlu dicari banyaknya cara dari $A$ ke $B$ dengan setidaknya menyentuh dinding sekali.
+
+Misalnya $R(x_L, y_L)$ adalah titik untuk pertama kalinya Vidia menyentuh dinding dari A.
+Refleksikan \textit{shortest rectangular path} dari $A$ ke $R$ terhadap $L$. Misalnya refleksi $L$ menghasilkan $A \xrightarrow{} A'$ dan $R \xrightarrow{} R'$.  Setiap \textit{shortest rectangular path} yang melewati dinding setidaknya sekali dapat dipartisi menjadi \textit{shortest rectangular path} dari $A$ ke $R$ dan $R$ ke $B$ untuk setiap titik latis $R$ di sepanjang garis $L$ yang bisa dilalui dari $A$. 
+
+\textbf{Klaim:} Misalnya $R(x_L, x_L+k)$, sebuah titik latis sembarang yang ada pada garis $L$, $R$ \textit{reachable} dari $S(x, y)$ jika dan hanya jika $R$ \textit{reachable} dari refleksi $S$, $S'(y-k, x+k)$. 
+
+\textbf{Bukti:} Titik latis $F$ \textit{reachable} dari $G$ jika dan hanya jika $x_G \leq x_F$ dan $y_G \leq y_F$. Perhatikan $x \leq x_L$ jika dan hanya jika $x + k \leq x_L + k$ dan $y \leq x_L + k$ jika dan hanya jika $y - k \leq x_L$. Sehingga $R$ \textit{reachable} dari $S$ jika dan hanya jika $R$ \textit{reachable} dari $S'$.
+
+\textbf{Klaim:} Misalnya $R$ adalah titik latis pada garis $L$ pertama yang dilalui Vidia. Banyaknya \textit{shortest rectangular path} dari $A$ ke $R$ equivalen dengan banyaknya \textit{shortest rectangular path} dari $A'$ ke $R$. 
+
+\textbf{Bukti:} Berdasarkan klaim sebelumnya, $R$ pasti \textit{reachable} dari $A'$. Perhatikan bahwa untuk setiap \textit{path}, hasil refleksinya membentuk \textit{shortest rectangular path} yang unik dari $A'$ ke $R$, karena $(x, y)\xrightarrow{}(x, y+1)$ membentuk hasil refleksi $(x', y')\xrightarrow{}(x'+1, y')$ dan $(x, y)\xrightarrow{}(x+1, y)$ membentuk hasil refleksi $(x', y')\xrightarrow{}(x', y'+1)$.
+
+Tinjau bahwa setiap \textit{shortest rectangular path} dari $A'$ ke $B$ pasti setidaknya memotong garis $L$ sekali di $R$. Dengan demikian untuk setiap \textit{shortest rectangular path} dari $A$ ke $B$ dapat dikorespondensi pada tepat satu buah \textit{shortest rectangular path} dari $A'$ ke $B$ (karena $A$ ke $R$ untuk setiap $R$ equivalen dengan $A'$ ke $R$). Akibatnya, untuk menghitung $f_2$ kita hanya perlu menghitung banyaknya seluruh \textit{shortest rectangular path} dari $A'$ ke $B$. Perhitungan ini dapat dengan mudah dihitung seperti \textbf{Kasus 2.1} pada titik $A'$ ke $B$.
+
+
+Kode Solusi: \url{https://ideone.com/W6Dmza}
+
+Kompleksitas Waktu: $O(N)$
+
+
+\end{document}

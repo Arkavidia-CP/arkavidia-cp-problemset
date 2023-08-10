@@ -1,0 +1,22 @@
+\section*{Problem K - Kepulauan Arkavnesia}
+\addcontentsline{toc}{section}{Problem K - Kepulauan Arkavnesia}
+\\
+\textit{Author: Dewana Gustavus Haraka Otang}
+\\
+\textit{Expected Difficulty: Easy-Medium}
+\\
+
+Sebelum menyelesaikan persoalan secara menyeluruh kita dapat mencoba menyelesaikan persoalan yang lebih simpel yaitu dengan menghapus tugas mengubah harga suatu pulau.\\
+
+Untuk menyelesaikan tugas perpindahan dari pulau i ke pulau j kita dapat membagi kondisi menjadi 2 kasus yaitu ada jalan dari pulau i ke pulau j, dan kondisi tidak ada jalan dari pulau i ke pulau j.\\
+
+Apabila ada jalan dari pulau i ke pulau j (bisa ada jalan langsung atau harus melewati beberapa pulau terlebih dahulu) maka harga yang perlu dikeluarkan adalah 0.\\
+
+Untuk mengecek apakah ada sebuah jalan dari pulau i ke pulau j dapat menggunakan struktur data Disjoint Set Union dan untuk mengecek konektivitas bisa dengan mengecek apakah kedua pulau berada pada komponen yang sama.\\
+
+Apabila tidak ada jalan dari pulau i ke pulau j maka harga termurah untuk berpindah adalah kita cari harga teleportasi termurah pada komponen pulau i ditambah dengan harga teleportasi termurah pada komponen pulau j, hal ini dapat dilakukan dengan mencatat harga termurah pada sebuah komponen ketika melakukan operasi penggabungan.\\
+
+Selanjutnya untuk menyelesaikan tugas mengubah harga sebuah pulau untuk setiap komponen kita akan mencatat seluruh harga pulau yang berada pada komponen tersebut dan kita akan menggunakan struktur data yang dapat melakukan operasi penghapusan, penambahan, dan mencari elemen terkecil. Untuk menyelesaikan permasalahan tersebut dapat menggunakan struktur data set atau multiset\\
+
+Kode Solusi : https://ideone.com/krwJdU\\
+Kompleksitas Waktu : $O((N + M + Q)log(N))$

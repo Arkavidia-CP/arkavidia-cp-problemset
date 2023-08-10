@@ -1,0 +1,12 @@
+*.exe
+*.in
+*.out
+*.ans
+**/tc
+.vscode
+temp
+*.aux
+*.log
+*.zip
+runner
+solution

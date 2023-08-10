@@ -1,0 +1,26 @@
+\section*{Problem A - Artefak Abyss}
+\addcontentsline{toc}{section}{Problem A - Artefak Abyss}
+\\
+\textit{Author: Dewana Gustavus Haraka Otang}
+\\
+\textit{Expected Difficulty: Medium}
+\\
+
+Sebelum menyelesaikan persoalan secara menyeluruh kita dapat mencoba menyelesaikan persoalan yang lebih simpel yaitu dengan menyelesaikan persoalan tanpa menggunakan penawar.\\
+\\
+Untuk menyelesaikan persoalan tanpa penawar kita dapat melakukan strategi greedy dengan membuat strategi pengambilan pada setiap tingkat.\\
+Strategi pengambilan setiap tingkat adalah sebagai berikut:\\
+Tingkat pertama : ambil seluruh artefak\\
+Tingkat kedua : ambil seluruh artefak yang memenuhi $(B_j - Y) \geq 0$\\
+Tingkat ketiga : urutkan artefak dan ambil dari nilai terkecil hingga terbesar\\
+Strategi urutan tingkat : seluruh tingkat ketiga $\rightarrow$ seluruh tingkat kedua $\rightarrow$ seluruh tingkat pertama\\
+Pembuktian strategi greedy diserahkan sebagai latihan kepada pembaca.\\
+\\
+Untuk menyelesaikan persoalan menggunakan penawar kita dapat mencoba secara bruteforce seluruh kombinasi penawar yang akan kita gunakan ketika mengambil artefak di tingkat kedua dan tingkat ketiga. Misal $(a,b)$ artinya kita gunakan a penawar pada tingkat kedua dan b penawar pada tingkat ketiga, kita lakukan seluruh kombinasi $(0, P), (1, P-1), (2, P-2), ..., (P, 0).$ Perlu diperhatikan juga untuk mencegah out of bounds kombinasi penawar perlu diubah menjadi $(min(a, M), min(b, K))$.\\
+\\
+Untuk menentukan artefak mana yang akan dipakaikan penawar kita dapat menggunakan strategi greedy lagi dengan memilih artefak dari yang bernilai terbesar untuk dipakaikan penawar dan kita gunakan strategi pengambilan tanpa penawar untuk mengambil sisanya.\\
+\\
+Namun strategi bruteforce masih memiliki kompleksitas waktu $O(M^2 + K^2)$. Untuk mengoptimisasi strategi bruteforce perhatikan bahwa ada perhitungan yang berulang ketika memilih artefak yang akan dipakaikan penawar dan pemilihan artefak sisa. Untuk mengoptimisasi hal tersebut kita dapat melakukan teknik Dynamic Programming yaitu prefix sum dan precompute.\\
+\\
+Kode Solusi : https://ideone.com/hQuyGG\\
+Kompleksitas Waktu : $O(N + M + K + min(M, P))$ dan $O(M log(M) + K log(K))$ untuk sort

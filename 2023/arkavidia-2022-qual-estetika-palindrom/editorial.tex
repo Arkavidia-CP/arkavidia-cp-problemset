@@ -1,0 +1,14 @@
+\section*{Problem E - Estetika Palindrom}
+\addcontentsline{toc}{section}{Problem E - Estetika Palindrom}
+\textit{Author: Michael Utama}
+\\
+\textit{Expected Difficulty: Medium}
+
+Perhatikan bahwa palindrom estetik terbentuk dari $2^0$ huruf yang sama, ditambah $2^1$ huruf yang sama, dan seterusnya hingga $2^k$. Setiap kombinasi $2^0$ huruf $h_1$, $2^1$ huruf $h_2$, hingga $2^k$ huruf $h_{k+1}$ dapat membentuk tepat satu palindrom. Maka, soal dapat diubah menjadi mencari jumlah kombinasi $h_1, h_2, …, h_{k+1}$ sehingga terdapat $2^0$ huruf $h_1$, $2^1$ huruf $h_2$, …, dan $2^k$ huruf $h_{k+1}$.
+
+Soal dapat diselesaikan dengan dp bitmask. $Dp[i][mask]$ adalah jumlah kombinasi huruf dengan menggunakan hanya $i$ huruf pertama dan sudah mengisi posisi-posisi yang berkorespondensi dengan $mask$.
+
+
+Kode Solusi: \url{https://ideone.com/VEAhHn}
+
+Kompleksitas Waktu: $O(|S|^{log_23})$

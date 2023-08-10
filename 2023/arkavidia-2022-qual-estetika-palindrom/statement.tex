@@ -1,0 +1,104 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{\includegraphics[width=\paperwidth, height=30mm]{../headerarkav.png}}
+  }
+}
+\rfoot{\thepage}
+\lfoot{Competitive Programming - Arkavidia 8.0}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{E. Estetika Palindrom} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Sejak dulu, Arvy menyukai hal-hal yang berpola, salah satunya adalah palindrom. Sebuah kata dikatakan sebagai \textbf{palindrom} apabila kata tersebut tetap sama katanya apabila dibalik. Arvy sangat menyukai palindrom hingga Arvy memiliki hobi unik yaitu mencari semua kemungkinan palindrom yang dapat dia bentuk dari menyusun ulang karakter-karakter dari suatu string \textit{S}.
+
+Setelah sekian lama, Arvy mulai bosan dengan palindrom. Suatu hari, dia tidak sengaja menemukan nama suatu karakter dalam \textit{game} bernama Aranara. Dia menemukan bahwa nama tersebut merupakan suatu palindrom spesial yang dia namakan \textbf{Palindrom Estetik}. \textbf{Palindrom Estetik} memiliki sifat dapat dipecah menjadi bentuk PxP (kedua P merupakan string yang sama) dimana P juga merupakan palindrom estetik dan x adalah suatu karakter pemisah. Sebagai contoh, aranara dapat dipecah menjadi ara n ara dimana ara juga merupakan suatu palindrom estetik (kata yang hanya terdiri atas 1 huruf juga termasuk palindrom estetik).
+
+Karena hal ini, Arvy pun melanjutkan hobinya tapi kali ini dengan palindrom estetik. Namun, Arvy baru menyadari bahwa memastikan semua kemungkinan palindrom estetik sudah dia buat tidak semudah yang dibayangkan. Sebagai teman yang baik, kamu pun mencoba membantu Arvy dengan membuatkan program untuk menghitung berapa banyak kemungkinan \textbf{Palindrom Estetik} yang dapat dia buat dari menyusun ulang string \textit{S}.
+
+\subsection*{Format Masukan}
+Baris pertama berisi suatu string \textit{S} ($1 \leq$ panjang \textit{S} $ \leq 100.000$). Semua huruf pada \textit{S} merupakan \textit{lower-case letter}.
+
+\subsection*{Format Keluaran}
+Sebuah baris berisi sebuah bilangan bulat yang menyatakan banyak cara menyusun karakter-karakter pada string \textit{S} sehingga terbentuk Palindrom Estetik \textbf{modulo} $10^9 + 7$.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+aranara
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+9
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+malam
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+7
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada test case pertama, ada 9 cara menyusun karakter-karakter pada aranara sehingga terbentuk palindrom estetik yaitu a, r, n, aaa, ara, ana, rar, rnr, aranara.
+
+Pada test case kedua, ada 7 cara menyusun karakter-karakter pada malam sehingga terbentuk palindrom estetik yaitu a, m, l, ala, ama, mlm, mam.
+
+\end{document}
